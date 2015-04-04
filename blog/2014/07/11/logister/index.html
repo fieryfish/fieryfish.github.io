@@ -1,0 +1,200 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>概率模型probabilistic Model(2) logistic回归 - 俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
+
+	
+	<meta name="description" content="故事是这样的，在概率模型世界，我们要面对的问题就是这样的一个公式：
+,
+其中，y是类别(class), $\bar{x}$是输入数据(input data)。
+在Naive Bayes里面我们已经看到了如何用Bayes公式搞定这个问题。
+这次，我们可以用个更直观的方式，怎么搞？
+这样？
+, &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">概率模型probabilistic Model(2) Logistic回归</h2>
+	<div class="entry-content"><p>故事是这样的，在概率模型世界，我们要面对的问题就是这样的一个公式：
+<script type="math/tex">p(y|\bar{x})</script>,
+其中，y是类别(class), $\bar{x}$是输入数据(input data)。
+在<a href="http://bboxers.com/blog/2014/06/16/probabilistic-models/">Naive Bayes</a>里面我们已经看到了如何用Bayes公式搞定这个问题。
+这次，我们可以用个更直观的方式，怎么搞？
+这样？
+<script type="math/tex">p(y|\bar{x})=w_{0}+\Sigma(w_{i} \cdot x_{i})</script>,
+左边很熟悉（probabilistic model），右边也很熟悉(linear model)，但是，放在一起总是怪怪的。
+计算机界有个名言，”Any problem in computer science can 
+be solved by adding a layer of indirection”
+这次，我们的’layer’就是logistic function。
+没听过的同学请先看<a href="http://en.wikipedia.org/wiki/Logistic_function">wiki</a>的解释。
+记住公式、记住图的样子，别问为啥。好了，再记住一个它的性质，1-$\theta(x) = \theta(-x)(\theta$表示logistic function)。对比图像看看，怎么样？很直观的一个性质吧。
+logistic function就是把右边那个linear model的范围(无穷)缩小到probabilistic model的范围([0,1])了，从而可以让我们用概率的方法搞定它。</p>
+
+<p>既然回归到了概率问题，那就用概率的方式解决。考虑一个普遍的binary classification问题：</p>
+
+<p><img class="left" src="/images/binary.png" width="400" height="400" title="image" alt="Binary" /></p>
+
+<p>它同样是<a href="http://en.wikipedia.org/wiki/Bernoulli_distribution">bernoulli distribution</a>。</p>
+
+<p>引入logistic function, 将<script type="math/tex">w_{0}+\Sigma(w_{i} \cdot x_{i})</script>带入到logistic function得到：
+<script type="math/tex">\theta(\bar{w}\cdot \bar{x})= \theta(w_{0}+\Sigma(w_{i} \cdot x_{i}))=\frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>把它带入上面的方程，得到了:
+<script type="math/tex">P(y=+1|\bar{w}\cdot \bar{x})= \frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>和
+<script type="math/tex">P(y=-1|\bar{w}\cdot \bar{x})=1-\frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>然后：
+<script type="math/tex">\frac{P(y=+1|\bar{w}\cdot \bar{x})}{P(y=-1|\bar{w}\cdot \bar{x})}= exp(w_{0}+\bar{w}\cdot \bar{x})</script>     (if &gt; 1 , 正例)</p>
+
+<p>两边取对数：
+<script type="math/tex">ln\frac{P(y=+1|\bar{w}\cdot \bar{x})}{P(y=-1|\bar{w}\cdot \bar{x})}=w_{0}+\bar{w}\cdot \bar{x}</script></p>
+
+<p>很神奇吧？线性分类器出现了！它的decision boundary就是<script type="math/tex">w_{0}+\bar{w}\cdot \bar{x}</script>, 这种神奇当然要归功于logistic function和它的性质喽！</p>
+
+<p>然后呢，就是训练喽。这里用到的就是概率里面常用到的Maximum likelihood方法。一些推导我直接copy了，请注意
+最后的那个就是目标函数。</p>
+
+<p><img class="left" src="/images/logis.png" width="600" height="400" title="image" alt="推导" /></p>
+
+<p>问题又被转化为了最优化问题，它是convex的，有最优解，用Gradient Descent就完事了~这里不是课本，就是说这个思路拉。
+再补一句，logistic regression会有过拟合问题，需要regularization。
+经典方式又出现了: argmin(目标函数+regularization)</p>
+
+<p>logistic regression在我看来是一个有很多标签的分类器。1 人们经常用它作为discriminative model的代表，
+跟generative model的代表naive Bayes去比较(<a href="http://ai.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf">比如这篇</a>)。
+discriminative model &amp; generative model请大家好好注意一下，这个
+区别存在于很多其他地方哦。
+(1)generative model是基于p(x,y), discriminative model是基于p(y|x),这样看来discriminative model更加直接，
+对于直接的分类问题，准确性相对更高，而且p(x,y)会储存更多值
+(2)generative model和discriminative可以互相转化，p(y|x)*p(x)就是p(x,y)。具体问题具体分析，有时候你可能要构建(x,y)而不是(x|y)。
+2 它的名字虽然包含regression，但是它做的事情是classification。
+3 它是个线性分类器。</p>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-11T00:18:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    YuLong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BIC(bayesian information criterion)+likelihood function - 俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
+
+	
+	<meta name="description" content="首先BIC是干什么的？用于比较在给定的数据下，比较不同模型的准则(criterion)。
+怎么比较呢？他会关注两件事情，一更好的拟合结果，二更少的参数。一很好理解，二这是要求
+一个相对更简单的模型去防止overfit这种事情。在想不起来的，请看这幅图。
+既然是比较模型，那它也属于model &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">BIC(bayesian Information Criterion)+likelihood Function</h2>
+	<div class="entry-content"><p>首先BIC是干什么的？用于比较在给定的数据下，比较不同模型的准则(criterion)。
+怎么比较呢？他会关注两件事情，一更好的拟合结果，二更少的参数。一很好理解，二这是要求
+一个相对更简单的模型去防止overfit这种事情。在想不起来的，请看这幅<a href="http://zoonek2.free.fr/UNIX/48_R/g883.png">图</a>。
+既然是比较模型，那它也属于model selection的范畴了。
+在<a href="http://en.wikipedia.org/wiki/Bayesian_information_criterion">wiki</a>上写了好多感觉还蛮啰嗦的，
+开始看了几遍也不怎么知道啥意思，其实主要的公式就是:(实例instance很多的情况下)</p>
+
+<script type="math/tex; mode=display">BIC = -2\cdot ln \hat{L}+k\cdot ln(n)</script>
+
+<p>$\hat{L}$是已经完成了像MLE这种参数估计以后，得到的最优参数的似然函数(Likelihood function)。k是参数的个数，n是实例的个数。
+一例胜千言，请大家直接翻到这个很棒的<a href="http://hea-www.cfa.harvard.edu/astrostat/Stat310_0910/dr_20100323_mle.pdf">ppt</a>，29页
+有一个简单的例子，相信看完这个例子的人基本也就明白是怎么回事了。</p>
+
+<p>这里有个很重要的叫做Likelihood function(似然函数)的概念，大家在Bayes rule里面应该也有看到过，然后在MLE(极大似然估计)里也有所耳闻。那么究竟它是怎么一回事呢？看个<a href="http://en.wikipedia.org/wiki/Likelihood_function">wiki</a>的例子，非常形象~
+在硬币游戏里，H代表head，正常来讲，投掷时候得到head的概率为<script type="math/tex">P_{H}=0.5</script>，那么投掷两次都是head的概率是：
+<script type="math/tex">P(HH | P_{H}=0.5) = 0.25</script>。如果用likelihood function去描述它，那么就是: <script type="math/tex">L(P_{H}=0.5 | HH)=P(HH | P_{H}=0.5) = 0.25</script>,
+它的含义并不是说给出了观察序列HH，我们得到概率<script type="math/tex">P_{H}=0.5</script>的概率是0.25。
+相应地：<script type="math/tex">L(P_{H}=1 | HH)=P(HH | P_{H}=1) = 1</script>,它的含义也并不是说给出了观察序列HH，我们得到概率<script type="math/tex">P_{H}=1</script>的概率是1,
+likelihood function不是概率密度（probability density function），下面的图便是我们该问题里<script type="math/tex">P_{H}</script>的分布，可以看出
+在观察序列都是HH的时候，我们更愿意相信<script type="math/tex">P_{H}=1</script>，这便完成了一次MLE的过程，在估计参数<script type="math/tex">P_{H}</script>的时候，我们更愿意相信
+这个参数的取值是1。</p>
+
+<p><img class="left" src="/images/LikelihoodFunctionAfterHH.png" width="600" height="600" title="image" alt="The likelihood function for estimating the probability of a coin landing heads-up without prior knowledge after observing HH" /></p>
+
+<p>另一方面，后验概率(Posterior probability)相对于likelihood function是一个逆过程。
+如果是后验概率，这个问题就是<script type="math/tex">P(P_{H} | HH)</script>，其实没什么特别的，知道这个概念就好了，
+看到Bayes Rule:</p>
+
+<script type="math/tex; mode=display">P(A|B)=\frac{P(B|A)P(A)}{P(B)}</script>
+
+<p>大家也就知道,后验概率是<script type="math/tex">P(A|B)</script>，似然函数是<script type="math/tex">P(B|A)</script>
+,先验概率是<script type="math/tex">P(A)</script>.</p>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-18T23:14:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    YuLong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

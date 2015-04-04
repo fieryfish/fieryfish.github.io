@@ -1,118 +1,853 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+	<meta charset="utf-8">
+	<title>俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
 
-  
-  <meta name="description" content=" Blog Archives Recent Posts ">
-  
+	
+	<meta name="description" content="如果再给我一次机会(鄙人本科修数学)，我一定会学好一下三门课的。1 线代 2 最优化 3 概率统计
+Why？ 先说线代，如果说什么是最普遍的表现数据的话，那么大概也就是矩阵了，玩转线代也就是玩转矩阵，就这么简单。
+现在满世界都在聊SVD，而一个最直接的例子就是PCA，这里我先介绍一篇blog， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://fieryfish.github.io/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
-  
-    <h2>A blogging framework for hackers.</h2>
-  
-</hgroup>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="fieryfish.github.io">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
+	
+		
+	
+	<div id="content" class="inner">
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/10/20/nn/">
+		
+			Machine Learning与数学</a>
+	</h2>
+	<div class="entry-content">
+		<p>如果再给我一次机会(鄙人本科修数学)，我一定会学好一下三门课的。1 线代 2 最优化 3 概率统计
+Why？</p>
+
+<p>先说线代，如果说什么是最普遍的表现数据的话，那么大概也就是矩阵了，玩转线代也就是玩转矩阵，就这么简单。
+现在满世界都在聊SVD，而一个最直接的例子就是PCA，这里我先介绍一篇<a href="http://blog.codinglabs.org/articles/pca-tutorial.html">blog</a>，写的非常好的。可以看出来，数据降维的关键就是如何寻找新的坐标系去表示数据，也就是同样的数据，如何用更加少的维度去表示更加多的信息。
+在寻找新的坐标系时，我们会用到协方差矩阵的对角化，eigenvector,eigenvalue等知识。在实施矩阵坐标变换，我们又会用到投影（projection）等知识。
+似乎不会线代，就算知道了PCA整体流程，心里也总是隐隐不安。如果英文还不错，那么<a href="http://book.douban.com/subject/3582335/">Introduction to Linear Algebra</a>配合Gilbert Strang 老师的公开课一定是你的不二选择。
+我相信就算大家以前学过这门课，也会再回头温习这们课的。</p>
+
+<p>再说最优化，给我体会最深的是，最优化和神经元网络简直就是孪生兄弟，相信大家都有在SVM的对偶，kkt，拉格朗日搞来搞去的经历。
+也会有思考梯度下降、牛顿法的过程。简单想想，从perceptron,MLP到SVM，都伴随着求解最小化损失函数的过程，相信这就是最优化的源头。我也一直怎么弄明白最优化，最近打算抱着<a href="http://book.douban.com/subject/1888111/">Convex Optimization</a>好好啃啃，再看看Stephen Boyd老师的公开课。</p>
+
+<p>最后就是概率统计。很多时候统计学家就是在搞机器学习，很难讲就是哪个属于统计，哪个属于机器学习。不过给我做直观的一个区别就是，统计经常是对已有的数据进行分析，比如各个统计量，一阶、二阶矩等都是有其意义的，可以用来解释数据。而像置信区间，假设检验什么的也都是用“科学的”方法表现数据的意义。而机器学习更多是通过已有的数据训练，再应用到未知数据。当然，好消息就是像基于概率统计的贝叶斯分类器，我们可以通过它知道分类时，测试数据分到各个类别的概率是多少，这样的概率也给了我们去解释为什么的依据。</p>
+
+<p>说了半天，其实我想说的时，这三门课在我看来是要伴随着对机器学习探索而不断重温的科目，各个算法都是基于前人不断迭代的过程，而数学就是这些的基石。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
   
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+
+
+<time datetime="2014-10-20T08:35:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
 </div>
-<aside class="sidebar">
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/09/01/randomforest/">
+		
+			RandomForest(随机森林)</a>
+	</h2>
+	<div class="entry-content">
+		<p>RandomForest在我印象里，是一个碉堡了的算法，因为用起来很简单，几乎不需要怎么调试就直接得到了很好地效果。
+所以这也是为什么在Kaggle的Titanic分类竞赛专门拿RandomForest<a href="http://www.kaggle.com/c/titanic-gettingStarted/details/getting-started-with-random-forests">举例</a>.
+在学习RandomForest之前，请保证大家已经基本掌握了Decision Tree。<a href="http://www.quora.com/How-do-random-forests-work-in-laymans-terms">这里</a>有个很好的对于RandomForest的解释。</p>
+
+<p>它的主要思想是将Decision Tree 聚合(ensemble)。根据<a href="http://en.wikipedia.org/wiki/Random_forest">wiki</a>,它的实现主要
+通过了bagging和Random subspace method两个方法。为什么要用这两个方法呢? Randomness!
+前者是针对训练数据的随机选择，比如1000个实例中随机选择800个去生成树。
+它的强悍之处在我看来是因为wiki里的这句话 “Increasing the number of trees tends to decrease the variance of the model,
+without increasing the bias.” Decision Tree的问题之一就是容易overfitting,显然bagging很好的解决了这个问题（更多关于overfitting请参考<a href="http://bboxers.com/blog/2014/06/29/curse-learning-curve/">维数灾难到学习曲线</a>)。
+后者是针对feature去进行选择，比如从100个
+features里面去选择50个,这使得每一个子树都不完全相同。之后再根据正常的Decision Trees算法去生成树，这里有个参数（free parameter）需要用户选择，
+就是生成多少个trees，一般来讲，当然是越多越好了，最后根据各个trees的结果去投票(vote)，算出最终的结果。
+但是tree多了以后运算会超级慢，这是个不得不要考虑进去的问题，准确+慢 vs 不准确+快？
+这时候，Out-of-bag error就是判定生成多大树的标准之一了，<a href="http://www.quora.com/What-is-the-out-of-bag-error-in-Random-Forests">quora</a>有个很好的解释，
+大概就是说，在我们bagging的时候，从1000个实例选了800个，那么剩下的那200就组成了out-of-bag examples，
+我们可以把这200个实例组成测试的trees，这样通过测试trees就可以大概知道RandomForest的精确度。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
   
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
+
+
+<time datetime="2014-09-01T22:57:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/08/18/bic/">
+		
+			BIC(bayesian Information Criterion)+likelihood Function</a>
+	</h2>
+	<div class="entry-content">
+		<p>首先BIC是干什么的？用于比较在给定的数据下，比较不同模型的准则(criterion)。
+怎么比较呢？他会关注两件事情，一更好的拟合结果，二更少的参数。一很好理解，二这是要求
+一个相对更简单的模型去防止overfit这种事情。在想不起来的，请看这幅<a href="http://zoonek2.free.fr/UNIX/48_R/g883.png">图</a>。
+既然是比较模型，那它也属于model selection的范畴了。
+在<a href="http://en.wikipedia.org/wiki/Bayesian_information_criterion">wiki</a>上写了好多感觉还蛮啰嗦的，
+开始看了几遍也不怎么知道啥意思，其实主要的公式就是:(实例instance很多的情况下)</p>
+
+<script type="math/tex; mode=display">BIC = -2\cdot ln \hat{L}+k\cdot ln(n)</script>
+
+<p>$\hat{L}$是已经完成了像MLE这种参数估计以后，得到的最优参数的似然函数(Likelihood function)。k是参数的个数，n是实例的个数。
+一例胜千言，请大家直接翻到这个很棒的<a href="http://hea-www.cfa.harvard.edu/astrostat/Stat310_0910/dr_20100323_mle.pdf">ppt</a>，29页
+有一个简单的例子，相信看完这个例子的人基本也就明白是怎么回事了。</p>
+
+<p>这里有个很重要的叫做Likelihood function(似然函数)的概念，大家在Bayes rule里面应该也有看到过，然后在MLE(极大似然估计)里也有所耳闻。那么究竟它是怎么一回事呢？看个<a href="http://en.wikipedia.org/wiki/Likelihood_function">wiki</a>的例子，非常形象~
+在硬币游戏里，H代表head，正常来讲，投掷时候得到head的概率为<script type="math/tex">P_{H}=0.5</script>，那么投掷两次都是head的概率是：
+<script type="math/tex">P(HH | P_{H}=0.5) = 0.25</script>。如果用likelihood function去描述它，那么就是: <script type="math/tex">L(P_{H}=0.5 | HH)=P(HH | P_{H}=0.5) = 0.25</script>,
+它的含义并不是说给出了观察序列HH，我们得到概率<script type="math/tex">P_{H}=0.5</script>的概率是0.25。
+相应地：<script type="math/tex">L(P_{H}=1 | HH)=P(HH | P_{H}=1) = 1</script>,它的含义也并不是说给出了观察序列HH，我们得到概率<script type="math/tex">P_{H}=1</script>的概率是1,
+likelihood function不是概率密度（probability density function），下面的图便是我们该问题里<script type="math/tex">P_{H}</script>的分布，可以看出
+在观察序列都是HH的时候，我们更愿意相信<script type="math/tex">P_{H}=1</script>，这便完成了一次MLE的过程，在估计参数<script type="math/tex">P_{H}</script>的时候，我们更愿意相信
+这个参数的取值是1。</p>
+
+<p><img class="left" src="/images/LikelihoodFunctionAfterHH.png" width="600" height="600" title="image" alt="The likelihood function for estimating the probability of a coin landing heads-up without prior knowledge after observing HH" /></p>
+
+<p>另一方面，后验概率(Posterior probability)相对于likelihood function是一个逆过程。
+如果是后验概率，这个问题就是<script type="math/tex">P(P_{H} | HH)</script>，其实没什么特别的，知道这个概念就好了，
+看到Bayes Rule:</p>
+
+<script type="math/tex; mode=display">P(A|B)=\frac{P(B|A)P(A)}{P(B)}</script>
+
+<p>大家也就知道,后验概率是<script type="math/tex">P(A|B)</script>，似然函数是<script type="math/tex">P(B|A)</script>
+,先验概率是<script type="math/tex">P(A)</script>.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-18T23:14:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/07/17/ggm/">
+		
+			高斯图模型 Gaussian Graphical Model</a>
+	</h2>
+	<div class="entry-content">
+		<p>如果说以前的一些文章还有加入自己的思考的话，那这篇可能是最客观的表述。其实
+Gaussian graphical model(GGM)资料还真的蛮少的，我本来也想找找书籍去学习下，结果到最后还是
+要去看论文。当然，论文的力量就是可以把一个知识讲到令人发指的长，这篇blog主要是梳理GGM的主要脉络，
+有兴趣的同学请直接参考相关论文文献。(Yuan and Lin, 2007 ; Friedman et al. 2008)</p>
+
+<p>首先，什么是Gaussian graphical model？它围绕Gaussian分布的变量去研究各个变量的联系。具体来说就是
+要研究Multivariate Normal Distribution.（插一句，这里Normal就是Gaussian，同义词，指正态分布，一般
+我们会把很多变量假设为正态分布的，比较典型的就是回归问题里error项拉,其原因就是中心极限定理central limit theorem。）
+Multivariate Normal Distribution的核心，是inverse covariance matrix(ICM)，也叫concentraion matrix, precision matrix.
+ICM在Multivariate Normal Distribution的密度函数里面，他决定了Gaussian graphical model长什么样子哦。
+好了，晕了的同学不好意思，必须要自己wiki一下Multivariate Normal Distribution，
+尤其是一个重要的性质：设</p>
+
+<p>covariance matrix: <script type="math/tex">\Sigma</script> ,</p>
+
+<p>inverse covariance matrix:C = $(\Sigma)^{-1} $</p>
+
+<p>$C=(c_{ij})$</p>
+
+<p>如果<script type="math/tex">c_{ij}=0</script>，那么变量i和变量j是独立的。也就是说，高斯图里，两个变量是没有联系的。
+学过图论的都知道，图就是node和edge组成的，如果$c_{ij}=0$，则那两个nodes没有edge。
+简单屡一下，高斯图模型重点是确定ICM长成什么样子，因为里面的元素为0代表相应的两个变量独立，也就确立了图的样子。
+下面我们来聊一聊另一个我们追求的，就是’稀疏’（sparse）。什么意思呢？在图里，不是每一个连接（Edge）都是我们想要的，
+换句话说，有时候nodes之间的edge有可能是噪音，应该被去除的，
+而又有时候，你只想看哪些nodes之间的连接是显著相关的（significant）。所以这里有2个问题：其一，去除更多
+不是很相关的连接，也就是让ICM里面有更多的0，即ICM更加sparse。方法？Lasso regularization。
+其二，这是一个trade-off，
+如果你想要保留更多的edges，lasso的惩罚项相应的就要小一点,保留的信息也就更多，
+反之，你增大lasso的惩罚项，edges就少了，图也就更sparse了一些。</p>
+
+<p>基于上述讨论，我直接给出我们要求解的表达式，具体过程请参考：(Yuan and Lin, 2007)</p>
+
+<p>最大化：$log det (C) − tr(SC) − ρ||C||_{1}$</p>
+
+<p>S is empirical covariance matrix.</p>
+
+<p>解决上述最优化方程有很多方法，像Interior point methods等等，我在我的毕业设计采用了<a href="http://statweb.stanford.edu/~tibs/glasso/">glsso</a>(Friedman et al. 2008)。
+它的优点就是快！他采用了block coordinate descent算法去求解上式，这个算法感觉就是奔着快去的。在这个<a href="https://www.cs.cmu.edu/~ggordon/10725-F12/schedule.html">链接</a>里面的
+Lecture 25有它的详细介绍，如果论文看不明白可以参考这个教程，其实我现在也在慢慢啃这个知识点，感觉还蛮难的，最优化没学好。。呜呜。。</p>
+
+<p>Anyway,我的毕业设计是关于犬类疾病研究的，最后自己画了一匹藏獒和相应的gaussian graphical model.<a href="http://smileclinic.alwaysdata.net/jackmsc/ggm_dog_network/">Link</a>.</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-17T10:18:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/07/11/logister/">
+		
+			概率模型probabilistic Model(2) Logistic回归</a>
+	</h2>
+	<div class="entry-content">
+		<p>故事是这样的，在概率模型世界，我们要面对的问题就是这样的一个公式：
+<script type="math/tex">p(y|\bar{x})</script>,
+其中，y是类别(class), $\bar{x}$是输入数据(input data)。
+在<a href="http://bboxers.com/blog/2014/06/16/probabilistic-models/">Naive Bayes</a>里面我们已经看到了如何用Bayes公式搞定这个问题。
+这次，我们可以用个更直观的方式，怎么搞？
+这样？
+<script type="math/tex">p(y|\bar{x})=w_{0}+\Sigma(w_{i} \cdot x_{i})</script>,
+左边很熟悉（probabilistic model），右边也很熟悉(linear model)，但是，放在一起总是怪怪的。
+计算机界有个名言，”Any problem in computer science can 
+be solved by adding a layer of indirection”
+这次，我们的’layer’就是logistic function。
+没听过的同学请先看<a href="http://en.wikipedia.org/wiki/Logistic_function">wiki</a>的解释。
+记住公式、记住图的样子，别问为啥。好了，再记住一个它的性质，1-$\theta(x) = \theta(-x)(\theta$表示logistic function)。对比图像看看，怎么样？很直观的一个性质吧。
+logistic function就是把右边那个linear model的范围(无穷)缩小到probabilistic model的范围([0,1])了，从而可以让我们用概率的方法搞定它。</p>
+
+<p>既然回归到了概率问题，那就用概率的方式解决。考虑一个普遍的binary classification问题：</p>
+
+<p><img class="left" src="/images/binary.png" width="400" height="400" title="image" alt="Binary" /></p>
+
+<p>它同样是<a href="http://en.wikipedia.org/wiki/Bernoulli_distribution">bernoulli distribution</a>。</p>
+
+<p>引入logistic function, 将<script type="math/tex">w_{0}+\Sigma(w_{i} \cdot x_{i})</script>带入到logistic function得到：
+<script type="math/tex">\theta(\bar{w}\cdot \bar{x})= \theta(w_{0}+\Sigma(w_{i} \cdot x_{i}))=\frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>把它带入上面的方程，得到了:
+<script type="math/tex">P(y=+1|\bar{w}\cdot \bar{x})= \frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>和
+<script type="math/tex">P(y=-1|\bar{w}\cdot \bar{x})=1-\frac{1}{1+exp(-(w_{0}+\Sigma(w_{i} \cdot x_{i})))}</script></p>
+
+<p>然后：
+<script type="math/tex">\frac{P(y=+1|\bar{w}\cdot \bar{x})}{P(y=-1|\bar{w}\cdot \bar{x})}= exp(w_{0}+\bar{w}\cdot \bar{x})</script>     (if &gt; 1 , 正例)</p>
+
+<p>两边取对数：
+<script type="math/tex">ln\frac{P(y=+1|\bar{w}\cdot \bar{x})}{P(y=-1|\bar{w}\cdot \bar{x})}=w_{0}+\bar{w}\cdot \bar{x}</script></p>
+
+<p>很神奇吧？线性分类器出现了！它的decision boundary就是<script type="math/tex">w_{0}+\bar{w}\cdot \bar{x}</script>, 这种神奇当然要归功于logistic function和它的性质喽！</p>
+
+<p>然后呢，就是训练喽。这里用到的就是概率里面常用到的Maximum likelihood方法。一些推导我直接copy了，请注意
+最后的那个就是目标函数。</p>
+
+<p><img class="left" src="/images/logis.png" width="600" height="400" title="image" alt="推导" /></p>
+
+<p>问题又被转化为了最优化问题，它是convex的，有最优解，用Gradient Descent就完事了~这里不是课本，就是说这个思路拉。
+再补一句，logistic regression会有过拟合问题，需要regularization。
+经典方式又出现了: argmin(目标函数+regularization)</p>
+
+<p>logistic regression在我看来是一个有很多标签的分类器。1 人们经常用它作为discriminative model的代表，
+跟generative model的代表naive Bayes去比较(<a href="http://ai.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf">比如这篇</a>)。
+discriminative model &amp; generative model请大家好好注意一下，这个
+区别存在于很多其他地方哦。
+(1)generative model是基于p(x,y), discriminative model是基于p(y|x),这样看来discriminative model更加直接，
+对于直接的分类问题，准确性相对更高，而且p(x,y)会储存更多值
+(2)generative model和discriminative可以互相转化，p(y|x)*p(x)就是p(x,y)。具体问题具体分析，有时候你可能要构建(x,y)而不是(x|y)。
+2 它的名字虽然包含regression，但是它做的事情是classification。
+3 它是个线性分类器。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-11T00:18:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/29/curse-learning-curve/">
+		
+			维数灾难到学习曲线(learning Curve)</a>
+	</h2>
+	<div class="entry-content">
+		<p><a href="http://bboxers.com/blog/2014/06/29/curse-dim/">上一篇</a>简单聊了聊维数灾难，
+这节就10只小猫小狗的例子稍微延伸一下，假设现在给你100只猫猫狗狗，3维已经不能满足线性可分了，这时候
+可能直到10维我们才能找到一个超平面（hyperplane）去分离这100个小猫\小狗。但这时候，会引出这样一个问题，过拟合(over-fitting)。
+也就是说，这时候尽管10维feature分离100个实例效果很棒，但是对于其他未知的小猫小狗(比如第101,102..个)，它的效果可能并不好！
+也就是说，训练数据(training data)的分类效果好并不等同于分类器在测试/未知数据(testing data)的效果好！
+我们所追求的应该是更少的泛化误差（generalization error）。</p>
+
+<p>泛化的反面，就是<strong>记录</strong>（memorize）。10维的超平面在这里更像是<strong>记录</strong>我这100个动物是小猫或是小狗，
+而不是<strong>学习</strong>(learning)。举个不恰当的例子：
+还是之前的小猫\小狗，3维数据可以很好区分10个instances，假设到第11个小猫/小狗，3个feature可能不够用了，那么就增加到4个！
+然而这时你这第11个小猫小狗如果是noisy的，即误分类的，就也被‘记录’了下来，而每次发生feature不够用的情况，咱就增加一个feature，
+最后就相当于你用了10个feature记录下了100个小动物是小猫还是小狗而已，即使这里面有误分类的，也给无情的记录下来了。
+这种记录，对于其他待分类数据，是无用的。
+这也就是为什么Decision Tree要选择‘最短路径’，Concept Learning要选择合取式(Conjunctive normal form)而不是析取。
+<!--这就是为什么我们有了一系列像cross-validation的方法。--></p>
+
+<p><img class="left" src="/images/learning_overfitting.png" width="400" height="400" title="image" alt="Using too many features results in overfitting" /></p>
+
+<p>(这里还要先请大家请自行google 一下cross-validation和bias/variance trade-off，因为后面的内容都是基于cross-validation的，
+bias/variance的概念也是要涉及到的。)</p>
+
+<p>对于之前那样的过拟合问题，显然是一个high variance问题，这类问题我们的学习曲线(Learning Curve)大概是这样的：
+<img class="left" src="/images/learning1.png" width="400" height="400" title="image" alt="From Novi 课件" /></p>
+
+<p>相反地，一个high bias问题的Learning Curve：</p>
+
+<p><img class="left" src="/images/learning2.png" width="400" height="400" title="image" alt="From Novi 课件" /></p>
+
+<p>对于分类问题，我们并不知道可以达到的最优结果(desired performance)是多少，
+不过Learning Curve却是一个可以让你往这个方向去的直观的工具。
+通过画Learning Curve，我们至少可以对现有的分类器有种‘感觉’，加之corss-validation，进而去避免high variance/high bias，
+进而再通过优化自己的参数free parameter，去接近、达到desired performance。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-29T15:47:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/29/curse-dim/">
+		
+			聊聊维数灾难(Curse of Dimensionality)</a>
+	</h2>
+	<div class="entry-content">
+		<p>本文原文摘自<a href="http://www.visiondummy.com/2014/04/curse-dimensionality-affect-classification/">这里</a>,作部分修改。</p>
+
+<p>这篇文章，聊聊很普遍的一个机器学习现象Curse of Dimensionality。首先，维度怎么会是一种‘灾难’呢？通过下面这个
+非常直观的例子，我们来看看。
+现在有这么一个分类任务，就是要区分10只‘狗’or‘猫’，给定的特征(feature)是基于颜色的（红、绿、蓝）。现在呢，我们考虑第一个
+feature——<strong>红色</strong>。</p>
+
+<p><img class="left" src="/images/curse1.png" width="350" height="350" title="image" alt="1维" /></p>
+
+<p>感觉不是太好？不能线性可分？那就再考虑一种feature——<strong>绿色</strong>！现在我们有2维feature了哦。</p>
+
+<p><img class="left" src="/images/curse2.png" width="350" height="350" title="image" alt="2维" /></p>
+
+<p>感觉还是不是太好？还是不能线性可分？那就再再考虑一种feature——<strong>蓝色</strong>！现在我们有3维feature了哦~</p>
+
+<p><img class="left" src="/images/curse3.png" width="350" height="350" title="image" alt="3维" /></p>
+
+<p>哇塞，现在可以找到一个平面去分离小猫小狗了！</p>
+
+<p><img class="left" src="/images/curse3yes.png" width="350" height="350" title="image" alt="3维--线性可分" /></p>
+
+<p>这里要告诉大家一个事实，<strong>当维度越来越高的时候，那么线性可分的概率会越来越大，而且当其维度高到一定时候，线性可分的概率会到1</strong>。(源自Cover theorem)。
+插播一下，我上面说的这个事实也是kernel trick的基础，所以本文跟kernel method有很大关系，他们的目的很简单，就是处理线性不可分数据，而处理的方法本质一样，而细节略有不同。
+比如，来说RBF network可以使用Guassian function作为RBF function去处理线性不可分数据，SVM可能会选择kernel trick直接在高维度处理数据等等。
+kernel method是机器学习很重要的一块，并不是说一定只能使用在SVM。我经常会觉得ML有时候更像是拼积木的游戏，
+你想搭建一个城堡（SVM处理线性不可分数据），那你就会看看哪个积木（kernel trick）更适用，然后就拿过来用，
+而积木(kernel trick)并不是说从属于你这所城堡。</p>
+
+<p>回到直播，那么这时候我们会说：越高维度越好喽！
+很不幸，维度高的‘灾难’这是显现出来了。就我们这个例子来说，假设每个维度有5个单位间隔（unit intervals），
+开个玩笑的说：不太红，有点红，红，特别红，极度红。-_-! 那么10个instances的情况下，每个单位间隔有2个instance喽。
+同样的问题升到2维，还是10个instances，但我们这时有5 x 5 = 25个单位间隔（unit squares）。
+平均每个单位间隔这时只有 10/25 = 0.4个instance。 再升到3维就只有0.08了。
+那这里的变化量就是我们的密度(Density), 也就是密度变得越来越小了，越来越稀疏(sparse)了。</p>
+
+<p>下面这个图从另一个角度解释了维度高的‘灾难’。如果，分类器的feature的范围是0到1的连续情况，1维时候，
+涵盖20%的feature只需要从全体（population）选20%个训练数据就可以了。但是如果升到2维，
+我们确需要从全体选出45%的数据才能满足涵盖20%feature(0.45x0.45=0.2)。3维去要0.58(0.58^3=0.2)。
+看来，相同的涵盖率，在维度增长时候，我们需要的训练数据是指数增加的。细细想想，也是很直观的，
+更多的feature当然需要更多的训练数据喽，我在<a href="http://bboxers.com/blog/2014/06/16/probabilistic-models/">概率模型probabilistic Models (1)</a>
+也聊过关于训练数据多少的问题。</p>
+
+<p><img class="left" src="/images/curse4a.png" width="600" height="600" title="image" alt="1-&gt;3维" /></p>
+
+<p>下面一节我还会继续这个话题，先休息一下~不过是另外一个角度，主要是说learning curve。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-29T14:17:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/24/models/">
+		
+			俯瞰Machine Learning</a>
+	</h2>
+	<div class="entry-content">
+		<p>这篇的内容主要是摘自<a href="http://book.douban.com/subject/11453073/">Machine Learning</a>
+这本书第一章节，我觉得蛮有收获的，希望可以提供一个不一样的角度。
+另外，这本书真的不错，是我导师推荐的，最重要的是我们Sussex大学图书馆竟然有！我会告诉大家我们图书馆连一本介绍Ruby的书籍都没有么。。可能是因为这本书是Cambridge出的，作为英国同乡总要给些面子吧，就引进来了。</p>
+
+<p>既然是‘俯瞰’，那肯定不是某些特定的技术。首先，问大家这样一个问题”Given a real world problem, how would you
+reduce it to a ml problem.(一个实际问题如何转化成一个ML问题？)”
+<a href="http://www.reddit.com/r/MachineLearning/comments/1wmayh/ml_job_interview_questions/">引自reddit</a>。
+这样的问题好像很没有头绪，但是别慌。书里给出了一个蛮不错的答案：其实大多数机器学习问题都着重干的3件事是关于Task, Model, Feature的。
+具体来说，实际的问题到底是要处理哪个Task：分类(classfication)? 回归(regression)? 聚类(clustering)?
+而不同的问题也要根据其场景去选择不同的model（稍后详细描述）。
+在真正使用模型的时候，更重要的可能是feature的选取、生成。例如：在SVM中的kernel trick就是一种关于feature的操作，亦或者
+pre-processing。通常来讲，我们大多数情况下不能直接获取到适用于model的数据，自然要对feature进行一些处理喽。</p>
+
+<p>这里我重点想聊一聊Model。在作者看来，Model有三大类型：Logical model, Probabilistic model, Geometry model.
+大家可以试着回顾一下3种model里面包含的算法。这里我分别举例一下他们典型的代表: Decision Tree, Naive Bayes, SVM。
+这样分类有什么好处呢就是各个类别有其特点。比如 Logical model比较直观(主要是Tree的表现形式)，其很多思想源自computer science
+(如<a href="http://en.wikipedia.org/wiki/Disjunctive_normal_form">DNF</a>,<a href="http://en.wikipedia.org/wiki/Conjunctive_normal_form">CNF</a>)。
+Probabilistic model的思想则更多是源自数学喽(尤其是概率与统计)。Geometry model也是很直观的，几乎所有课件都会来个二维平面，
+然后各种正例反例加个decision boundary去解释来解释去，当然也免不了最优化，解析几何的一些数学概念。</p>
+
+<p>在处理实际问题时，不知道大家有没有在意过这样一个角度，这些模型其实还有个区别就是在于输入数据的类型，即<strong>离散值</strong>、<strong>连续值</strong>。
+其对应的概念就是Grouping model, Grading model。举个例子：训练数据里面有两个正例为(5.0, 3.0), (1.3, 2.4)，两个个反例为(-5.0, -3.0), (-1.3, -2.4)。
+对于Geometry model可能直接画个直线(decision boundary)，然后告诉你在直线的一侧，任何数据都是正例，另一侧都是反例(连续的感觉有木有)。
+而对于Decision Tree,可能会问你这样的问题，对于新来的数据(x,y), x和y &gt; 0乎?(离散的感觉有木有) 要是大于0呢，就是正例，否则呢，就都是反例。
+从<a href="http://book.douban.com/subject/11453073/">书里</a>摘两个图给大家，希望大家能有个俯瞰的感觉。</p>
+
+<p>字段说明(geometry model, probabilistic model, logical model, grouping model, grading model, discrete value, real value, supervised, unsupervised, multi-class)</p>
+
+<p><img class="left" src="/images/model1.png" width="600" height="600" title="image" alt="总结" />
+<img class="left" src="/images/model2.png" width="600" height="600" title="image" alt="总结2" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-24T12:01:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/18/perceptron/">
+		
+			感知器(Perceptron)里的选择题</a>
+	</h2>
+	<div class="entry-content">
+		<p>感知器是相当重要的，原因很简单，它是Network的基础，不论是ANN，SVM，他们都有着类似基于感知器的神经元网络结构。
+这也是为什么我在学校修Neural Network这门课时，光Perceptron的作业就占了50%的分数。
+算法很简单，看看图很容易理解。
+所以我在主要想聊聊这里面一些其他蛮有意思的东西，
+在机器学习很多时候，我们发现”选择”是一个很重要的东西，不管是理论的建立还是实现的优化，都要做出种种选择，
+今天我们就来看看Perceptron里面的一些选择题。</p>
+
+<p>首先，想问下感知器的损失函数（loss function）的形式什么？
+在很多情况下，我们用到的损失函数形式都是这个样子的：(引用自<a href="http://www.sussex.ac.uk/sussexneuroscience/people/person/201607">Luc</a>课件)</p>
+
+<p><script type="math/tex">E(\bar{w})=\frac{1}{2}\Sigma(t_{i}-y_{i})^2</script> 
+(1)</p>
+
+<p>其中，<script type="math/tex">y_{i}</script> 是感知器对于第i个实例(instance)的输出/预测(+1,-1)，$t_{i}$ 是第i个实例的原本的类别(+1,-1)。</p>
+
+<p>为什么对于线性可分数据，普遍的感知器的loss function的选择却变成了这个样子？</p>
+
+<p><script type="math/tex">E(\bar{w})=-\Sigma \bar{w} \cdot \bar{x_{i}} \cdot t_{i}</script>
+（for all misclassified $\bar{x_{i}}$） (2)</p>
+
+<p>其中w是权重，<script type="math/tex">x_{i}</script>是第i个实例(instance)的值，$t_{i}$是第i个实例的类别。</p>
+
+<p><img class="left" src="/images/perceptron.png" width="350" height="350" title="image" alt="perceptron" /></p>
+
+<p>由这个图，我们可以看到，(2)式可以告诉我们更多误分类(misclassified)点的信息，
+具体来说，就是误分类点与分界线(decision boundary)的远近跟loss function成正比，这样loss function越大，
+说明误分类点离得越远，反之亦然。
+这样看来，(2)式就显得更加合理，因为每一次更新，如果某个误分类点的误差太大，那么这次更新的时候就纠正的更多。</p>
+
+<p>至于更新法则：</p>
+
+<p><script type="math/tex">\bar{w}(t+1) = \bar{w}(t) + \eta \bar{x_{i}} \cdot t_{i}</script>
+（for all misclassified $\bar{x_{i}}$）</p>
+
+<p>(<a href="http://book.douban.com/subject/10590856/">统计学习方法</a>给出的形式)</p>
+
+<p>等价于:</p>
+
+<script type="math/tex; mode=display">\bar{w}(t+1) = \bar{w}(t) + \eta \bar{x_{i}} \cdot (t_{i}-y_{i})</script>
+
+<p>$y_{i}$感知器对于第i个实例的输出。(<a href="http://book.douban.com/subject/1102235/">机器学习(Tom Mitchell)</a>给出的形式)</p>
+
+<p>另外的一个问题，对于我们这个问题，我们应该用批量(batch)梯度下降还是随机(stochastic)梯度下降呢？</p>
+
+<p>简单的答案是随机(stochastic)梯度下降。(<a href="http://www.quora.com/Machine-Learning/Whats-the-difference-between-gradient-descent-and-stochastic-gradient-descent">参考</a>)
+不过前提是数据线性可分，随机(stochastic)梯度下降的缺点之一就是会导致不能收敛，即使十分接近于极小值。</p>
+
+<p>这一次我们做了几个选择题，而大家也可以看到，
+Perceptron的模型很简单，重点是要在适当的时刻选择一些适当的工具。
+其实如果是现实的场景，面临的选择更多了，比如梯度下降的终止条件应该怎么选择？步长呢？初始值呢？
+如果数据线性不可分，我们的算法又要怎么选择？stochastic -&gt; batch
+<!--这里，不得不说，ML是一个选择是世界，一个算法的好坏，往往不在于算法本身，而在于根据数据进行的选择，-->
+<!--比如SVM，如果都是用默认参数，起初的效果一般都不是很理想，但是可以慢慢调节参数以后，大都会提高很明显。说了这么多，就是强调一下：**选择**很重要。--></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-18T19:17:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/16/probabilistic-models/">
+		
+			概率模型probabilistic Models (1)</a>
+	</h2>
+	<div class="entry-content">
+		<p>之前说到我在公司是做Ruby on rails程序员，后来转到数据这块（小公司+好老板的好处就是可以无损的转去做自己喜欢的项目），
+面临的第一个项目就是做一个分类器，而我第一个采用的第一个模型就是概率模型(probabilistic models)，
+具体分类器是<a href="http://zh.wikipedia.org/zh/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8">朴素贝叶斯分类器</a>。
+效果在当时的我们看来，可以总结为三个字：碉堡了。我当时看到结果真的蛮震惊的，从前上课时候一扫而过的贝叶斯公式竟然有如此威力！</p>
+
+<p>首先，如果对于朴素贝叶斯或者贝叶斯公式还不打了解的同学，我的建议是：拿出一张纸和一支笔，去<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html">阮一峰的blog</a>
+搜索、学习贝叶斯相关内容。（阮一峰的blog很有文采，强烈推荐之）。
+在我看到‘朴素贝叶斯(Naive Bayes)’这几个字以后，对我来讲比较敏感的字眼其实是‘朴素(Naive)’两个字，
+贝叶斯就贝叶斯，怎么还naive呢？
+其实，他表示的是一个简化的假设（assumption），即假设数据的特征(feature)/属性/字段是条件独立的(conditional independent)，why？
+举个例子（引用我的导师<a href="http://www.sussex.ac.uk/profiles/335583/publications">Novi</a>）：假设我们要训练样例是20个features组成的，每个feature都是取值二元的（即可以取0或者1，no或者yes），
+样例的类别（class label）也是二元的，</p>
+
+<script type="math/tex; mode=display">p(X_{1},X_{2}..X_{20}|Y)</script>
+
+<p>那么，概率的估计（probability estimates）有多少种可能呢？也就是假设空间(hypothesis space)的大小是多少？
+我的答案：
+$2^{21} -1=2097151个$
+（每个Feature有两种，class label有两种，减1是因为概率之和必须为1，减去一个自由度）</p>
+
+<p>所以这就导致了我们至少要学习2097151个样例才可以保证贝叶斯公式可以用，是不是很恐怖。
+这也就是为什么我们需要一个条件独立假设，即</p>
+
+<script type="math/tex; mode=display">P(X_{1},X_{2}..X_{20}|Y) := P(X_{1}|Y)\cdot P(X_{2}|Y)...P(X_{20}|Y)</script>
+
+<p>这时候，概率的估计（probability estimates）有多少种可能呢？
+我的答案是41个，
+（我的解释：对于每一项P(X|Y)来说，给定了Y值，X的自由度是1，因为其概率和是1，而Y有两种可能取值，所以一共2*20=40,
+再加上P(Y)还有一个自由度，一共就是41）
+显然，naive Bayes小了很多，对于训练的要求减小了。
+那再引出一个问题，什么是‘不朴素(non-naive)’的分类器呢？</p>
+
+<p>回归到我当时的任务，简单场景就是：每个商铺/网店都有一些描述信息，我们想根据字段的信息（比如‘地址address’）把他们分类到相关城市city去。
+做这个任务的模型很简单，首先将地址分词，得到word1,word2,word3…,得到相应公式(以分成两个词为例)：</p>
+
+<script type="math/tex; mode=display">P(Y_{city}|X_{word1},X_{word2})=\frac{P(X_{word1}|Y_{city})\cdot P(X_{word2}|Y_{city})\cdot (p_{Y_{city}})}{P(X_{word1})\cdot P(X_{word2})}</script>
+
+<p>由于分类时候，分子都是是一样的，可以不考虑。再假设
+$P(Y_{city})$
+是均匀分布(uniform distribution)，又可以
+忽略这个值（但不总是满足uniform distribution, 先验知识有时候是很重要的），那么最终的分类过程相当于</p>
+
+<script type="math/tex; mode=display">P^{\ast}(Y_{city}|X_{word1},X_{word2})=\operatorname{argmax}_Y (P(X_{word1}|Y_{city})\cdot P(X_{word2}|Y_{city}))</script>
+
+<p>在实际应用时候，naive Bayes有个特别的优势：有些地址是不太好判别，而这一类的地址，在计算后验概率的时候，
+概率较大的几组概率都很相近，导致很难‘确信’地把这些样例分类到相关城市。比如: (长春和北京都有朝阳区哦~)</p>
+
+<script type="math/tex; mode=display">P(Y_{北京}|X_{朝阳区})=0.3 , ~~
+P(Y_{长春}|X_{朝阳区})=0.33</script>
+
+<p>那么通过naive Bayes可以加一些简单的判断去提取这些很容易出错的实例，是不是很有用呢。^-^
+另外,先验知识(prior knowledge)也可以被当做因素考虑进来，例如：根据上面的概率
+<script type="math/tex">P(Y_{长春}|X_{朝阳区}) > P(Y_{北京}|X_{朝阳区})</script>
+因此，这个实例应该被分到<strong>长春</strong>。</p>
+
+<p>但是考虑先验知识
+<script type="math/tex">P(Y_{北京})=0.5, ~~ P(Y_{长春})=0.3</script></p>
+
+<p>那么
+<script type="math/tex">% <![CDATA[
+P(Y_{长春}|X_{朝阳区})\cdot P(Y_{长春}) < P(Y_{北京}|X_{朝阳区})\cdot P(Y_{北京}) %]]></script>
+因此，这个实例应该被分到<strong>北京</strong>。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-16T15:34:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+<nav id="pagenavi">
     
-  </ul>
-</section>
+    
+        <a href="/posts/2" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
 
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Your Name -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    YuLong
 
 </footer>
-  
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 

@@ -1,0 +1,169 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>俯瞰Machine Learning - 俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
+
+	
+	<meta name="description" content="这篇的内容主要是摘自Machine Learning
+这本书第一章节，我觉得蛮有收获的，希望可以提供一个不一样的角度。
+另外，这本书真的不错，是我导师推荐的，最重要的是我们Sussex大学图书馆竟然有！我会告诉大家我们图书馆连一本介绍Ruby的书籍都没有么。。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">俯瞰Machine Learning</h2>
+	<div class="entry-content"><p>这篇的内容主要是摘自<a href="http://book.douban.com/subject/11453073/">Machine Learning</a>
+这本书第一章节，我觉得蛮有收获的，希望可以提供一个不一样的角度。
+另外，这本书真的不错，是我导师推荐的，最重要的是我们Sussex大学图书馆竟然有！我会告诉大家我们图书馆连一本介绍Ruby的书籍都没有么。。可能是因为这本书是Cambridge出的，作为英国同乡总要给些面子吧，就引进来了。</p>
+
+<p>既然是‘俯瞰’，那肯定不是某些特定的技术。首先，问大家这样一个问题”Given a real world problem, how would you
+reduce it to a ml problem.(一个实际问题如何转化成一个ML问题？)”
+<a href="http://www.reddit.com/r/MachineLearning/comments/1wmayh/ml_job_interview_questions/">引自reddit</a>。
+这样的问题好像很没有头绪，但是别慌。书里给出了一个蛮不错的答案：其实大多数机器学习问题都着重干的3件事是关于Task, Model, Feature的。
+具体来说，实际的问题到底是要处理哪个Task：分类(classfication)? 回归(regression)? 聚类(clustering)?
+而不同的问题也要根据其场景去选择不同的model（稍后详细描述）。
+在真正使用模型的时候，更重要的可能是feature的选取、生成。例如：在SVM中的kernel trick就是一种关于feature的操作，亦或者
+pre-processing。通常来讲，我们大多数情况下不能直接获取到适用于model的数据，自然要对feature进行一些处理喽。</p>
+
+<p>这里我重点想聊一聊Model。在作者看来，Model有三大类型：Logical model, Probabilistic model, Geometry model.
+大家可以试着回顾一下3种model里面包含的算法。这里我分别举例一下他们典型的代表: Decision Tree, Naive Bayes, SVM。
+这样分类有什么好处呢就是各个类别有其特点。比如 Logical model比较直观(主要是Tree的表现形式)，其很多思想源自computer science
+(如<a href="http://en.wikipedia.org/wiki/Disjunctive_normal_form">DNF</a>,<a href="http://en.wikipedia.org/wiki/Conjunctive_normal_form">CNF</a>)。
+Probabilistic model的思想则更多是源自数学喽(尤其是概率与统计)。Geometry model也是很直观的，几乎所有课件都会来个二维平面，
+然后各种正例反例加个decision boundary去解释来解释去，当然也免不了最优化，解析几何的一些数学概念。</p>
+
+<p>在处理实际问题时，不知道大家有没有在意过这样一个角度，这些模型其实还有个区别就是在于输入数据的类型，即<strong>离散值</strong>、<strong>连续值</strong>。
+其对应的概念就是Grouping model, Grading model。举个例子：训练数据里面有两个正例为(5.0, 3.0), (1.3, 2.4)，两个个反例为(-5.0, -3.0), (-1.3, -2.4)。
+对于Geometry model可能直接画个直线(decision boundary)，然后告诉你在直线的一侧，任何数据都是正例，另一侧都是反例(连续的感觉有木有)。
+而对于Decision Tree,可能会问你这样的问题，对于新来的数据(x,y), x和y &gt; 0乎?(离散的感觉有木有) 要是大于0呢，就是正例，否则呢，就都是反例。
+从<a href="http://book.douban.com/subject/11453073/">书里</a>摘两个图给大家，希望大家能有个俯瞰的感觉。</p>
+
+<p>字段说明(geometry model, probabilistic model, logical model, grouping model, grading model, discrete value, real value, supervised, unsupervised, multi-class)</p>
+
+<p><img class="left" src="/images/model1.png" width="600" height="600" title="image" alt="总结" />
+<img class="left" src="/images/model2.png" width="600" height="600" title="image" alt="总结2" /></p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-24T12:01:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    YuLong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

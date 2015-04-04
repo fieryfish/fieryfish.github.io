@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://fieryfish.github.io/blog/2014/10/20/nn/</loc>
+    <lastmod>2014-10-20T08:35:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/09/01/randomforest/</loc>
+    <lastmod>2014-09-01T22:57:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/08/18/bic/</loc>
+    <lastmod>2014-08-18T23:14:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/07/17/ggm/</loc>
+    <lastmod>2014-07-17T10:18:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/07/11/logister/</loc>
+    <lastmod>2014-07-11T00:18:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/29/curse-learning-curve/</loc>
+    <lastmod>2014-06-29T15:47:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/29/curse-dim/</loc>
+    <lastmod>2014-06-29T14:17:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/24/models/</loc>
+    <lastmod>2014-06-24T12:01:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/18/perceptron/</loc>
+    <lastmod>2014-06-18T19:17:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/16/probabilistic-models/</loc>
+    <lastmod>2014-06-16T15:34:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2014/06/15/hello-machine-learning/</loc>
+    <lastmod>2014-06-15T18:16:00+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/blog/2013/03/17/kai-shi-bloglu-cheng/</loc>
+    <lastmod>2013-03-17T18:44:00+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://fieryfish.github.io/blog/archives/</loc>
   </url>
   <url>
     <loc>http://fieryfish.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://fieryfish.github.io/about/</loc>
   </url>
 </urlset>

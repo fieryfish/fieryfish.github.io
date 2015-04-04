@@ -1,0 +1,155 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Machine Learning与数学 - 俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
+
+	
+	<meta name="description" content="如果再给我一次机会(鄙人本科修数学)，我一定会学好一下三门课的。1 线代 2 最优化 3 概率统计
+Why？ 先说线代，如果说什么是最普遍的表现数据的话，那么大概也就是矩阵了，玩转线代也就是玩转矩阵，就这么简单。
+现在满世界都在聊SVD，而一个最直接的例子就是PCA，这里我先介绍一篇blog， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Machine Learning与数学</h2>
+	<div class="entry-content"><p>如果再给我一次机会(鄙人本科修数学)，我一定会学好一下三门课的。1 线代 2 最优化 3 概率统计
+Why？</p>
+
+<p>先说线代，如果说什么是最普遍的表现数据的话，那么大概也就是矩阵了，玩转线代也就是玩转矩阵，就这么简单。
+现在满世界都在聊SVD，而一个最直接的例子就是PCA，这里我先介绍一篇<a href="http://blog.codinglabs.org/articles/pca-tutorial.html">blog</a>，写的非常好的。可以看出来，数据降维的关键就是如何寻找新的坐标系去表示数据，也就是同样的数据，如何用更加少的维度去表示更加多的信息。
+在寻找新的坐标系时，我们会用到协方差矩阵的对角化，eigenvector,eigenvalue等知识。在实施矩阵坐标变换，我们又会用到投影（projection）等知识。
+似乎不会线代，就算知道了PCA整体流程，心里也总是隐隐不安。如果英文还不错，那么<a href="http://book.douban.com/subject/3582335/">Introduction to Linear Algebra</a>配合Gilbert Strang 老师的公开课一定是你的不二选择。
+我相信就算大家以前学过这门课，也会再回头温习这们课的。</p>
+
+<p>再说最优化，给我体会最深的是，最优化和神经元网络简直就是孪生兄弟，相信大家都有在SVM的对偶，kkt，拉格朗日搞来搞去的经历。
+也会有思考梯度下降、牛顿法的过程。简单想想，从perceptron,MLP到SVM，都伴随着求解最小化损失函数的过程，相信这就是最优化的源头。我也一直怎么弄明白最优化，最近打算抱着<a href="http://book.douban.com/subject/1888111/">Convex Optimization</a>好好啃啃，再看看Stephen Boyd老师的公开课。</p>
+
+<p>最后就是概率统计。很多时候统计学家就是在搞机器学习，很难讲就是哪个属于统计，哪个属于机器学习。不过给我做直观的一个区别就是，统计经常是对已有的数据进行分析，比如各个统计量，一阶、二阶矩等都是有其意义的，可以用来解释数据。而像置信区间，假设检验什么的也都是用“科学的”方法表现数据的意义。而机器学习更多是通过已有的数据训练，再应用到未知数据。当然，好消息就是像基于概率统计的贝叶斯分类器，我们可以通过它知道分类时，测试数据分到各个类别的概率是多少，这样的概率也给了我们去解释为什么的依据。</p>
+
+<p>说了半天，其实我想说的时，这三门课在我看来是要伴随着对机器学习探索而不断重温的科目，各个算法都是基于前人不断迭代的过程，而数学就是这些的基石。</p>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-20T08:35:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2015
+
+    YuLong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
