@@ -1,0 +1,52 @@
+---
+layout: post
+title: "高斯图模型 Gaussian graphical model"
+date: 2014-07-17 10:18
+comments: true
+categories: 
+---
+如果说以前的一些文章还有加入自己的思考的话，那这篇可能是最客观的表述。其实
+Gaussian graphical model(GGM)资料还真的蛮少的，我本来也想找找书籍去学习下，结果到最后还是
+要去看论文。当然，论文的力量就是可以把一个知识讲到令人发指的长，这篇blog主要是梳理GGM的主要脉络，
+有兴趣的同学请直接参考相关论文文献。(Yuan and Lin, 2007 ; Friedman et al. 2008)
+
+首先，什么是Gaussian graphical model？它围绕Gaussian分布的变量去研究各个变量的联系。具体来说就是
+要研究Multivariate Normal Distribution.（插一句，这里Normal就是Gaussian，同义词，指正态分布，一般
+我们会把很多变量假设为正态分布的，比较典型的就是回归问题里error项拉,其原因就是中心极限定理central limit theorem。）
+Multivariate Normal Distribution的核心，是inverse covariance matrix(ICM)，也叫concentraion matrix, precision matrix.
+ICM在Multivariate Normal Distribution的密度函数里面，他决定了Gaussian graphical model长什么样子哦。
+好了，晕了的同学不好意思，必须要自己wiki一下Multivariate Normal Distribution，
+尤其是一个重要的性质：设
+
+covariance matrix: $$\Sigma$$ ,
+
+inverse covariance matrix:C = $(\Sigma)^{-1} $
+
+$C=(c_{ij})$
+
+如果$$c_{ij}=0$$，那么变量i和变量j是独立的。也就是说，高斯图里，两个变量是没有联系的。
+学过图论的都知道，图就是node和edge组成的，如果$c_{ij}=0$，则那两个nodes没有edge。
+简单屡一下，高斯图模型重点是确定ICM长成什么样子，因为里面的元素为0代表相应的两个变量独立，也就确立了图的样子。
+下面我们来聊一聊另一个我们追求的，就是'稀疏'（sparse）。什么意思呢？在图里，不是每一个连接（Edge）都是我们想要的，
+换句话说，有时候nodes之间的edge有可能是噪音，应该被去除的，
+而又有时候，你只想看哪些nodes之间的连接是显著相关的（significant）。所以这里有2个问题：其一，去除更多
+不是很相关的连接，也就是让ICM里面有更多的0，即ICM更加sparse。方法？Lasso regularization。
+其二，这是一个trade-off，
+如果你想要保留更多的edges，lasso的惩罚项相应的就要小一点,保留的信息也就更多，
+反之，你增大lasso的惩罚项，edges就少了，图也就更sparse了一些。
+
+基于上述讨论，我直接给出我们要求解的表达式，具体过程请参考：(Yuan and Lin, 2007)
+
+最大化：$log det (C) − tr(SC) − ρ\|\|C\|\|_{1}$
+
+S is empirical covariance matrix.
+
+解决上述最优化方程有很多方法，像Interior point methods等等，我在我的毕业设计采用了[glsso](http://statweb.stanford.edu/~tibs/glasso/)(Friedman et al. 2008)。
+它的优点就是快！他采用了block coordinate descent算法去求解上式，这个算法感觉就是奔着快去的。在这个[链接](https://www.cs.cmu.edu/~ggordon/10725-F12/schedule.html)里面的
+Lecture 25有它的详细介绍，如果论文看不明白可以参考这个教程，其实我现在也在慢慢啃这个知识点，感觉还蛮难的，最优化没学好。。呜呜。。
+
+Anyway,我的毕业设计是关于犬类疾病研究的，最后自己画了一匹藏獒和相应的gaussian graphical model.[Link](http://smileclinic.alwaysdata.net/jackmsc/ggm_dog_network/).
+
+
+
+

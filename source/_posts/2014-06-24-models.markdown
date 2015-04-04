@@ -1,0 +1,37 @@
+---
+layout: post
+title: "俯瞰Machine Learning"
+date: 2014-06-24 12:01
+comments: true
+categories: 
+---
+这篇的内容主要是摘自[Machine Learning](http://book.douban.com/subject/11453073/)
+这本书第一章节，我觉得蛮有收获的，希望可以提供一个不一样的角度。
+另外，这本书真的不错，是我导师推荐的，最重要的是我们Sussex大学图书馆竟然有！我会告诉大家我们图书馆连一本介绍Ruby的书籍都没有么。。可能是因为这本书是Cambridge出的，作为英国同乡总要给些面子吧，就引进来了。
+
+既然是‘俯瞰’，那肯定不是某些特定的技术。首先，问大家这样一个问题"Given a real world problem, how would you
+reduce it to a ml problem.(一个实际问题如何转化成一个ML问题？)"
+[引自reddit](http://www.reddit.com/r/MachineLearning/comments/1wmayh/ml_job_interview_questions/)。
+这样的问题好像很没有头绪，但是别慌。书里给出了一个蛮不错的答案：其实大多数机器学习问题都着重干的3件事是关于Task, Model, Feature的。
+具体来说，实际的问题到底是要处理哪个Task：分类(classfication)? 回归(regression)? 聚类(clustering)?
+而不同的问题也要根据其场景去选择不同的model（稍后详细描述）。
+在真正使用模型的时候，更重要的可能是feature的选取、生成。例如：在SVM中的kernel trick就是一种关于feature的操作，亦或者
+pre-processing。通常来讲，我们大多数情况下不能直接获取到适用于model的数据，自然要对feature进行一些处理喽。
+
+这里我重点想聊一聊Model。在作者看来，Model有三大类型：Logical model, Probabilistic model, Geometry model.
+大家可以试着回顾一下3种model里面包含的算法。这里我分别举例一下他们典型的代表: Decision Tree, Naive Bayes, SVM。
+这样分类有什么好处呢就是各个类别有其特点。比如 Logical model比较直观(主要是Tree的表现形式)，其很多思想源自computer science
+(如[DNF](http://en.wikipedia.org/wiki/Disjunctive_normal_form),[CNF](http://en.wikipedia.org/wiki/Conjunctive_normal_form))。
+Probabilistic model的思想则更多是源自数学喽(尤其是概率与统计)。Geometry model也是很直观的，几乎所有课件都会来个二维平面，
+然后各种正例反例加个decision boundary去解释来解释去，当然也免不了最优化，解析几何的一些数学概念。
+
+在处理实际问题时，不知道大家有没有在意过这样一个角度，这些模型其实还有个区别就是在于输入数据的类型，即**离散值**、**连续值**。
+其对应的概念就是Grouping model, Grading model。举个例子：训练数据里面有两个正例为(5.0, 3.0), (1.3, 2.4)，两个个反例为(-5.0, -3.0), (-1.3, -2.4)。
+对于Geometry model可能直接画个直线(decision boundary)，然后告诉你在直线的一侧，任何数据都是正例，另一侧都是反例(连续的感觉有木有)。
+而对于Decision Tree,可能会问你这样的问题，对于新来的数据(x,y), x和y > 0乎?(离散的感觉有木有) 要是大于0呢，就是正例，否则呢，就都是反例。
+从[书里](http://book.douban.com/subject/11453073/)摘两个图给大家，希望大家能有个俯瞰的感觉。
+
+字段说明(geometry model, probabilistic model, logical model, grouping model, grading model, discrete value, real value, supervised, unsupervised, multi-class)
+
+{% img left /images/model1.png 600 600 'image' '总结' %}
+{% img left /images/model2.png 600 600 'image' '总结2' %}
