@@ -7,9 +7,9 @@
 	<meta name="author" content="YuLong">
 
 	
-	<meta name="description" content="‘hello world’似乎像是技术的入场礼，不同的人总在开始的时候用尽一些办法，就是为了看到’hello XXX’这几个字母
-闪现在屏幕的那一刹那。现在我也盗用这个仪式，开始聊聊我对于Machine Learning(ML)的理解。
-我觉得学东西直观的感觉(intuition) &hellip;">
+	<meta name="description" content="感知器是相当重要的，原因很简单，它是Network的基础，不论是ANN，SVM，他们都有着类似基于感知器的神经元网络结构。
+这也是为什么我在学校修Neural Network这门课时，光Perceptron的作业就占了50%的分数。
+算法很简单，看看图很容易理解。 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -22,7 +22,20 @@
 	
 </head>
 
-
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 <body>
 	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
 <nav id="main-nav"><ul class="main">
@@ -78,6 +91,194 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/18/perceptron/">
+		
+			感知器(Perceptron)里的选择题</a>
+	</h2>
+	<div class="entry-content">
+		<p>感知器是相当重要的，原因很简单，它是Network的基础，不论是ANN，SVM，他们都有着类似基于感知器的神经元网络结构。
+这也是为什么我在学校修Neural Network这门课时，光Perceptron的作业就占了50%的分数。
+算法很简单，看看图很容易理解。
+所以我在主要想聊聊这里面一些其他蛮有意思的东西，
+在机器学习很多时候，我们发现”选择”是一个很重要的东西，不管是理论的建立还是实现的优化，都要做出种种选择，
+今天我们就来看看Perceptron里面的一些选择题。</p>
+
+<p>首先，想问下感知器的损失函数（loss function）的形式什么？
+在很多情况下，我们用到的损失函数形式都是这个样子的：(引用自<a href="http://www.sussex.ac.uk/sussexneuroscience/people/person/201607">Luc</a>课件)</p>
+
+<p><script type="math/tex">E(\bar{w})=\frac{1}{2}\Sigma(t_{i}-y_{i})^2</script> 
+(1)</p>
+
+<p>其中，<script type="math/tex">y_{i}</script> 是感知器对于第i个实例(instance)的输出/预测(+1,-1)，$t_{i}$ 是第i个实例的原本的类别(+1,-1)。</p>
+
+<p>为什么对于线性可分数据，普遍的感知器的loss function的选择却变成了这个样子？</p>
+
+<p><script type="math/tex">E(\bar{w})=-\Sigma \bar{w} \cdot \bar{x_{i}} \cdot t_{i}</script>
+（for all misclassified $\bar{x_{i}}$） (2)</p>
+
+<p>其中w是权重，<script type="math/tex">x_{i}</script>是第i个实例(instance)的值，$t_{i}$是第i个实例的类别。</p>
+
+<p><img class="left" src="/images/perceptron.png" width="350" height="350" title="image" alt="perceptron" /></p>
+
+<p>由这个图，我们可以看到，(2)式可以告诉我们更多误分类(misclassified)点的信息，
+具体来说，就是误分类点与分界线(decision boundary)的远近跟loss function成正比，这样loss function越大，
+说明误分类点离得越远，反之亦然。
+这样看来，(2)式就显得更加合理，因为每一次更新，如果某个误分类点的误差太大，那么这次更新的时候就纠正的更多。</p>
+
+<p>至于更新法则：</p>
+
+<p><script type="math/tex">\bar{w}(t+1) = \bar{w}(t) + \eta \bar{x_{i}} \cdot t_{i}</script>
+（for all misclassified $\bar{x_{i}}$）</p>
+
+<p>(<a href="http://book.douban.com/subject/10590856/">统计学习方法</a>给出的形式)</p>
+
+<p>等价于:</p>
+
+<script type="math/tex; mode=display">\bar{w}(t+1) = \bar{w}(t) + \eta \bar{x_{i}} \cdot (t_{i}-y_{i})</script>
+
+<p>$y_{i}$感知器对于第i个实例的输出。(<a href="http://book.douban.com/subject/1102235/">机器学习(Tom Mitchell)</a>给出的形式)</p>
+
+<p>另外的一个问题，对于我们这个问题，我们应该用批量(batch)梯度下降还是随机(stochastic)梯度下降呢？</p>
+
+<p>简单的答案是随机(stochastic)梯度下降。(<a href="http://www.quora.com/Machine-Learning/Whats-the-difference-between-gradient-descent-and-stochastic-gradient-descent">参考</a>)
+不过前提是数据线性可分，随机(stochastic)梯度下降的缺点之一就是会导致不能收敛，即使十分接近于极小值。</p>
+
+<p>这一次我们做了几个选择题，而大家也可以看到，
+Perceptron的模型很简单，重点是要在适当的时刻选择一些适当的工具。
+其实如果是现实的场景，面临的选择更多了，比如梯度下降的终止条件应该怎么选择？步长呢？初始值呢？
+如果数据线性不可分，我们的算法又要怎么选择？stochastic -&gt; batch
+<!--这里，不得不说，ML是一个选择是世界，一个算法的好坏，往往不在于算法本身，而在于根据数据进行的选择，-->
+<!--比如SVM，如果都是用默认参数，起初的效果一般都不是很理想，但是可以慢慢调节参数以后，大都会提高很明显。说了这么多，就是强调一下：**选择**很重要。--></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-18T19:17:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/16/probabilistic-models/">
+		
+			概率模型probabilistic Models (1)</a>
+	</h2>
+	<div class="entry-content">
+		<p>之前说到我在公司是做Ruby on rails程序员，后来转到数据这块（小公司+好老板的好处就是可以无损的转去做自己喜欢的项目），
+面临的第一个项目就是做一个分类器，而我第一个采用的第一个模型就是概率模型(probabilistic models)，
+具体分类器是<a href="http://zh.wikipedia.org/zh/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8">朴素贝叶斯分类器</a>。
+效果在当时的我们看来，可以总结为三个字：碉堡了。我当时看到结果真的蛮震惊的，从前上课时候一扫而过的贝叶斯公式竟然有如此威力！</p>
+
+<p>首先，如果对于朴素贝叶斯或者贝叶斯公式还不打了解的同学，我的建议是：拿出一张纸和一支笔，去<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html">阮一峰的blog</a>
+搜索、学习贝叶斯相关内容。（阮一峰的blog很有文采，强烈推荐之）。
+在我看到‘朴素贝叶斯(Naive Bayes)’这几个字以后，对我来讲比较敏感的字眼其实是‘朴素(Naive)’两个字，
+贝叶斯就贝叶斯，怎么还naive呢？
+其实，他表示的是一个简化的假设（assumption），即假设数据的特征(feature)/属性/字段是条件独立的(conditional independent)，why？
+举个例子（引用我的导师<a href="http://www.sussex.ac.uk/profiles/335583/publications">Novi</a>）：假设我们要训练样例是20个features组成的，每个feature都是取值二元的（即可以取0或者1，no或者yes），
+样例的类别（class label）也是二元的，</p>
+
+<script type="math/tex; mode=display">p(X_{1},X_{2}..X_{20}|Y)</script>
+
+<p>那么，概率的估计（probability estimates）有多少种可能呢？也就是假设空间(hypothesis space)的大小是多少？
+我的答案：
+$2^{21} -1=2097151个$
+（每个Feature有两种，class label有两种，减1是因为概率之和必须为1，减去一个自由度）</p>
+
+<p>所以这就导致了我们至少要学习2097151个样例才可以保证贝叶斯公式可以用，是不是很恐怖。
+这也就是为什么我们需要一个条件独立假设，即</p>
+
+<script type="math/tex; mode=display">P(X_{1},X_{2}..X_{20}|Y) := P(X_{1}|Y)\cdot P(X_{2}|Y)...P(X_{20}|Y)</script>
+
+<p>这时候，概率的估计（probability estimates）有多少种可能呢？
+我的答案是41个，
+（我的解释：对于每一项P(X|Y)来说，给定了Y值，X的自由度是1，因为其概率和是1，而Y有两种可能取值，所以一共2*20=40,
+再加上P(Y)还有一个自由度，一共就是41）
+显然，naive Bayes小了很多，对于训练的要求减小了。
+那再引出一个问题，什么是‘不朴素(non-naive)’的分类器呢？</p>
+
+<p>回归到我当时的任务，简单场景就是：每个商铺/网店都有一些描述信息，我们想根据字段的信息（比如‘地址address’）把他们分类到相关城市city去。
+做这个任务的模型很简单，首先将地址分词，得到word1,word2,word3…,得到相应公式(以分成两个词为例)：</p>
+
+<script type="math/tex; mode=display">P(Y_{city}|X_{word1},X_{word2})=\frac{P(X_{word1}|Y_{city})\cdot P(X_{word2}|Y_{city})\cdot (p_{Y_{city}})}{P(X_{word1})\cdot P(X_{word2})}</script>
+
+<p>由于分类时候，分子都是是一样的，可以不考虑。再假设
+$P(Y_{city})$
+是均匀分布(uniform distribution)，又可以
+忽略这个值（但不总是满足uniform distribution, 先验知识有时候是很重要的），那么最终的分类过程相当于</p>
+
+<script type="math/tex; mode=display">P^{\ast}(Y_{city}|X_{word1},X_{word2})=\operatorname{argmax}_Y (P(X_{word1}|Y_{city})\cdot P(X_{word2}|Y_{city}))</script>
+
+<p>在实际应用时候，naive Bayes有个特别的优势：有些地址是不太好判别，而这一类的地址，在计算后验概率的时候，
+概率较大的几组概率都很相近，导致很难‘确信’地把这些样例分类到相关城市。比如: (长春和北京都有朝阳区哦~)</p>
+
+<script type="math/tex; mode=display">P(Y_{北京}|X_{朝阳区})=0.3 , ~~
+P(Y_{长春}|X_{朝阳区})=0.33</script>
+
+<p>那么通过naive Bayes可以加一些简单的判断去提取这些很容易出错的实例，是不是很有用呢。^-^
+另外,先验知识(prior knowledge)也可以被当做因素考虑进来，例如：根据上面的概率
+<script type="math/tex">P(Y_{长春}|X_{朝阳区}) > P(Y_{北京}|X_{朝阳区})</script>
+因此，这个实例应该被分到<strong>长春</strong>。</p>
+
+<p>但是考虑先验知识
+<script type="math/tex">P(Y_{北京})=0.5, ~~ P(Y_{长春})=0.3</script></p>
+
+<p>那么
+<script type="math/tex">% <![CDATA[
+P(Y_{长春}|X_{朝阳区})\cdot P(Y_{长春}) < P(Y_{北京}|X_{朝阳区})\cdot P(Y_{北京}) %]]></script>
+因此，这个实例应该被分到<strong>北京</strong>。</p>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-16T15:34:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">

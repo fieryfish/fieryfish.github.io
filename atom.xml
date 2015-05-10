@@ -4,7 +4,7 @@
   <title><![CDATA[俞龙-Data Player]]></title>
   <link href="http://fieryfish.github.io/atom.xml" rel="self"/>
   <link href="http://fieryfish.github.io/"/>
-  <updated>2015-04-04T20:52:22+08:00</updated>
+  <updated>2015-05-10T21:30:27+08:00</updated>
   <id>http://fieryfish.github.io/</id>
   <author>
     <name><![CDATA[YuLong]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SS2]]></title>
+    <link href="http://fieryfish.github.io/blog/2015/05/10/ss2/"/>
+    <updated>2015-05-10T20:51:35+08:00</updated>
+    <id>http://fieryfish.github.io/blog/2015/05/10/ss2</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[库存管理之安全库存(1) --Inventory Management--safety stock]]></title>
+    <link href="http://fieryfish.github.io/blog/2015/05/04/ss1/"/>
+    <updated>2015-05-04T22:55:08+08:00</updated>
+    <id>http://fieryfish.github.io/blog/2015/05/04/ss1</id>
+    <content type="html"><![CDATA[<p>来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。
+不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。
+这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
+它们不一定是’正确’答案，不过却是我对于库存的一些认识。</p>
+
+<p>说到库存管理，我觉得一句话足以描述：在合适的时间，以合适的形式(如持有、退货、补货等)，
+对于sku（Stock Keeping Unit，简单理解为一件货品）进行操作，使得库存保持在合适的水平。
+这句话随着我做事情的深入，便越来越觉得很精辟。
+那么开始这段旅程吧，我们可以先来聊聊一个我觉得很意思的一个话题就是：安全库存(Safety Stock)。
+相信有过库存管理经验的人一定对于这个概念不陌生，那么什么是安全库存呢？</p>
+
+<p><img class="left" src="http://fieryfish.github.io/images/ss.jpg" width="400" height="400" title="image" alt="safety stock" /></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Safety_stock">安全库存</a>顾名思义，就是防止断货的一种提前进行补货的策略。
+试想，假设我们知道供应商送货需要10天，正常情况下，我们采取的策略是需要提前十天进行采购，
+这样可以保证在可用库存为0的时候，我们新的订单就会到货了，这样就不会缺货拉。
+然而，我怎么知道这十天会卖多少呢？那就做一些预测喽，然而，再准确的预测也不可能给出一个’正确的’答案。
+理想情况下，销量预测和真实销量的差值(残差)会服从N(0,<script type="math/tex">\sigma</script>)的正态分布(Normal distribution)。
+在这里插一句，关于<a href="http://en.wikipedia.org/wiki/Normal_distribution">Normal distribution</a>这个钟形曲线，
+在库存管理里面无处不在，由于它太’Normal’了，并且有着非常好的性质，
+所以我们会有很多假设都是基于这个分布，后面我还会再次对于他进行讨论。
+再回到刚才的话题，当我们根据销量预测的结果进行补货的时候，会有一半的概率由于销量预测的偏差导致缺货。
+具体来说，如果销量预测对未来一段时间预测是20件/天，
+那么当我们设置20*10 = 200件为我们的补货点的时候，如果真实销量是180+或190+件还好，如果真实销量在第8天就到达了200件，那么你就会有至少1天的断货发生。</p>
+
+<p>那么很自然，我们就会想去进行提前补货以防止断货的发生。不过提前多久是合适的？1天,2天还是1周？
+这个就是引入安全库存的意义所在。
+OK，那关于安全库存的本质，我觉得<a href="http://book.douban.com/subject/12565786/">Inventory Management Explained</a>这本书的观点描述的非常好。
+‘safety stock can be used to compensate for supply variablity. More specifically,
+we use it to compensate for the amount of demand variablity that may occur during the lead-time period.’
+那在下一个blog我会详细阐述这个点。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Machine Learning与数学]]></title>
