@@ -1,0 +1,62 @@
+---
+layout: post
+title: "关于库存KPI"
+date: 2015-05-11 22:55:34 +0800
+comments: true
+categories: 
+---
+本文主要会聊一些关于库存管理(Inventory Management)的KPI,主要参考了[Inventory Management Explained](http://book.douban.com/subject/12565786/).
+
+###周转
+
+周转有很多定义,其中我们最常用的应该是这一个样子:
+
+sku的周转=sku的销量/sku的库存
+
+从公式上我们可以看出来,它所反映的是sku的库存投入与销售量的比例。 
+这可能是最常用的反应库存指标的KPI,在Inventory Management Explained的作者看来,
+这个KPI虽然很有用, 但可能是最为误用或者滥用的指标。 本质上,
+这个KPI反应的仅仅是库存周转的速率,仅此而已,
+并不是说高的周转就一定比低的周转好，不过很多误用的地方就在于此，
+很多时候企业会以提高周转为主要目标。如果这样是我们所追求的，
+那么采购的时候,直接将采购量降为一半、而采购次数变成2倍。
+这一‘黄金准则’会使得我们的库存直接保持在原来的一半,
+周转优化了整整两倍啊!可是,如果我们采购的成本很高,在财务上,我们这多出来一倍的采购成本是会导致亏钱的。
+所以,再次重申,高的周转只意味着你的sku运转的更快了。
+另外,[Quora](http://www.quora.com/What-metrics-are-most-important-for-Inventory-Management-Why)里面还有一个很有意思的讨论,它把成本维度的周转和毛利率
+(Gross Margin or Gross Profit Percent ,GM%) 放在一起讨论。 
+
+GM%=$$\frac{Sales−Cost}{Sales} =1−\frac{Cost}{Sales}$$
+
+如果周转考虑的不是销量角度的,而是成本角度的,那么公式如下: 
+
+InventoryTurns = $$\frac{Cost}{AverageInventoryValue}$$
+
+通过上面两个公式,我们可以看到sku的周转可以转换成: 
+
+$$GM\% = 1 − \frac{InventoryTurns∗AverageInventoryValue}{Sales}$$
+
+$$InventoryTurns = \frac{Sales(1−GM\%)}{AverageInventoryValue}$$
+
+这里有个很有意思的联系:毛利率和周转是密切相关的,也就说,如果你知道了一个理想的毛利率,那么你也就可以得到一个理想的周转了。
+（我不对此结论负责哈）
+
+
+
+###Gross Margin Return on Inventory Investment(GMROII)
+
+Inventory Management Explained书中,作者给出了一个很俏皮的KPI–-GMROII. 
+它描述了你投入到库存的钱与商品的利润(毛利)的比率。 
+它反映了你每投入到库存的钱,如采购一定金额的商品,与这些库存内的商品获得的利润的比率。 
+这个指标很关键,因为它是直接反应你在库存是否很良好的转化为真金白银。 
+一个简单的例子(只计算毛利):如果你采购一个东东花了3块, 售价是10块,如果一年你卖了500件,这时总利润是7\*500=3500. 
+如果这时平均库存数量维持在100件,那么投入到库存的钱是3\*100=300块。
+GMROII就是3500/300=11.67。 
+换句话说:你有300块钱,把他们都采购这件东东,并且一年的平均库存水平维持在100件,
+然后一年你赚了3500块钱,回报率是11.67。 
+当然我们也可以通过净利润(net profit)计算,这样就可以看到哪些商品是最赚钱的,投资回报率最大的。
+这样的KPI可以帮助我们做些什么呢? 
+或许我们可以先排序一下sku,看看哪些sku特别赚钱、投资回报率很高,那些投资回报率很低。
+我们去分析看看有什么我们可以改进的地方去提升低回报率的sku,比如:提高售价。 
+有时候,某个sku的周转很高,看起来很赚钱,但是由于库存过多,
+仓储成本过高,当你计算GMROII时可能不那么理想,并没有那么赚钱。
