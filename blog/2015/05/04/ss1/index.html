@@ -3,13 +3,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>库存管理之安全库存(1) &#8211;Inventory Management&#8211;safety stock - 俞龙-Data Player</title>
+	<title>库存管理之安全库存 &#8211;Inventory Management&#8211;safety stock - 俞龙-Data Player</title>
 	<meta name="author" content="YuLong">
 
 	
-	<meta name="description" content="来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。
-不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。
-这些日子做库存管理感觉还蛮有意思的， &hellip;">
+	<meta name="description" content="这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
+它们不一定是’正确’答案，不过却是我对于库存的一些认识。 说到库存管理，我觉得一句话足以描述：在合适的时间，以合适的形式(如持有、退货、补货等)，
+对于sku（Stock Keeping Unit， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -91,10 +91,10 @@
 		
 	
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">库存管理之安全库存(1) &#8211;Inventory Management&#8211;safety Stock</h2>
-	<div class="entry-content"><p>来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。
-不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。
-这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
+	<h2 class="title">库存管理之安全库存 &#8211;Inventory Management&#8211;safety Stock</h2>
+	<div class="entry-content"><!--来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。-->
+<!--不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。-->
+<p>这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
 它们不一定是’正确’答案，不过却是我对于库存的一些认识。</p>
 
 <p>说到库存管理，我觉得一句话足以描述：在合适的时间，以合适的形式(如持有、退货、补货等)，
@@ -114,15 +114,51 @@
 在库存管理里面无处不在，由于它太’Normal’了，并且有着非常好的性质，
 所以我们会有很多假设都是基于这个分布，后面我还会再次对于他进行讨论。
 再回到刚才的话题，当我们根据销量预测的结果进行补货的时候，会有一半的概率由于销量预测的偏差导致缺货。
-具体来说，如果销量预测对未来一段时间预测是20件/天，
-那么当我们设置20*10 = 200件为我们的补货点的时候，如果真实销量是180+或190+件还好，如果真实销量在第8天就到达了200件，那么你就会有至少1天的断货发生。</p>
+具体来说，如果销量预测对未来一段时间预测是20件/天，一次补10天的货物，
+那么当我们设置20*10 = 200件为我们的补货点的时候，如果10天的真实销量是180+或190+件还好，如果真实销量在第8天就到达了200件，那么你就会有2天的断货发生。</p>
 
 <p>那么很自然，我们就会想去进行提前补货以防止断货的发生。不过提前多久是合适的？1天,2天还是1周？
 这个就是引入安全库存的意义所在。
 OK，那关于安全库存的本质，我觉得<a href="http://book.douban.com/subject/12565786/">Inventory Management Explained</a>这本书的观点描述的非常好。
 ‘safety stock can be used to compensate for supply variablity. More specifically,
-we use it to compensate for the amount of demand variablity that may occur during the lead-time period.’
-那在下一个blog我会详细阐述这个点。</p>
+we use it to compensate for the amount of demand variablity that may occur during the lead-time period.’</p>
+
+<p>对于安全库存的意义,就是由于各个因素(如销量、vlt)的不确定性，使得我们要寻找一个缓冲，
+可以容忍一定的变化范围，保证我们的库存减少断货的问题，同时又不要有过多冗余的库存。
+关于这，我有个很认可的观点：我们不怕任何程度的变量，因为通过数学，尤其是统计的方法，我们可以量化出来这些变动。
+在一些安全库存的公式中(如<a href="http://www.inventorymanagementreview.org/2005/06/safety_stock.html">安全库存计算公式</a>)，
+会考虑销量预测的不确定性和vlt(vendor lead time–供应商送货时长)的不确定性，然而，
+实际情况你可能还要量化如供应商能否有货的不确定性，销量预测的偏差等等，很难有一个公式能涵盖所有这些变化。
+而一般来讲，vlt是影响最大的因素，所以一般的安全库存公式都只是考虑它，并不是说其他的不确定性就不应该考虑了。
+至于安全库存计算公式，资料很多，大家可以参考<a href="http://en.wikipedia.org/wiki/Safety_stock">wiki</a>。
+另外，这里附上安全库存公式的一个推导<a href="http://michelbaudin.com/2012/07/23/safety-stocks-more-about-the-formula/">源自</a>：</p>
+
+<p><img class="left" src="/images/ssproof1.png" width="400" height="400" title="image" alt="proof1" /></p>
+
+<p><img class="right" src="/images/ssproof2.png" width="400" height="400" title="image" alt="proof2" /></p>
+
+<p>主要思路就是假设这些变量（销量、vlt）服从正态分布，然后通过正态分布的z-value（库存管理大都称其为称作’服务水平’），
+找到对应的一个值（如95%），去计算相应的安全库存。</p>
+
+<p>这里我想针对两个点去继续讨论下。一、当我们的服务水平设置为95%的时候，这个95%具体指的是什么呢？
+二、库存的现货率和周转这两个主要的kpi的关系。</p>
+
+<p>一、当我们设置了95%的服务水平的安全库存的时候，可能大多数人认为就是我的订单满足率，可以达到95%。
+不过如果仔细想一想这个公式所要表达的意义，那么我觉得其意义就是说这个vlt时间段内，有95%的时间段是可以满足所有订单的；
+而有5%的可能性，sku的订单不能完全满足的,即订单满足率不到100%。
+<!--$$-->
+<!--\frac{1}{4} * 5\% = 1.25\%-->
+<!--$$。--></p>
+
+<p>二、这里可以看出，当你的订购周期越长，那么现货率应该是越高的，然而，订购周期越长，也就意味着你要一次订购更多数量的商品。
+同时也就意味着，你的周转会变慢，库存的持有成本会增加。
+这里相信大家也可以看出来，现货这周转两个是存在制约关系的，我们在采购时候的，当以’少量多次’的形式采购，现货可能会下降，但是周转会变短。
+而’多量少次’的形式则反之。与此同时，如果从成本的角度考虑的话，’少量多次’会增加订购成本，
+而减少仓储持有成本，
+‘多量少次’的则反之。那这种相互制约关系怎么去做取舍呢？答案就是最优化(optimization)。
+库存管理很多模型都会基于最优化模型去求解,
+这里就看你的目标函数了，比如在计算补货量的时候，如果你基于成本最优，那么可以得到很经典的EOQ模型。</p>
+
 </div>
 
 

@@ -183,77 +183,14 @@ GMROII就是3500/300=11.67。
     <article class="post">
 	<h2 class="title">
 		
-		<a href="/blog/2015/05/10/ss2/">
-		
-			库存管理之安全库存(2) &#8211;Inventory Management&#8211;safety Stock</a>
-	</h2>
-	<div class="entry-content">
-		<p>上文结尾处我们给出了安全库存的意义。其本质就是由于各个因素(如销量)的不确定性，使得我们要寻找一个缓冲，
-可以容忍一定的变化范围，保证我们的库存没有断货的问题。这里有个很重要的观点：我们不怕任何程度的变量，
-因为通过数学，尤其是统计的方法，我们可以量化出来这些变动，但前提是要找到这些变化。
-在一些安全库存的公式中(如<a href="http://www.inventorymanagementreview.org/2005/06/safety_stock.html">安全库存计算公式</a>)，
-会考虑销量预测的不确定性和vlt(vendor lead time–供应商送货时长)的不确定性，然而，
-实际情况你可能还要量化如供应商能否有货\送货等等的不确定性，很难有一个公式能涵盖所有这些变化。
-至于安全库存计算公式，资料很多，就不深入了。大家可以参考<a href="http://en.wikipedia.org/wiki/Safety_stock">wiki</a>，
-主要思路就是假设这些变量（销量、vlt）服从正态分布，然后通过正态分布的z-value（库存管理大都称其为称作’服务水平’），
-去找到你想要的一个值（如95%），去计算相应的安全库存。</p>
-
-<p>这里我想针对两个点去继续讨论下。一、当我们的服务水平设置为95%的时候，实际缺货的概率大概是怎么样子的？
-二、库存的现货率和周转这两个主要的kpi的关系。
-一、当我们设置了95%的服务水平的安全库存的时候，我觉得其意义就是说这个vlt时间段内，有5%的可能性，
-这个sku的订单不能满足的，仅此而已。假设，这个sku的订购周期是4周，vlt是1周，那么计算这个sku缺货的概率应该是
-<!--$$-->
-<!--\frac{1}{4}*{5%}=1.25%-->
-<!--$$-->
-<script type="math/tex">\frac{1}{4} * 5\% = 1.25\%</script>。
-这里可以看出，当你的订购周期越长，那么现货率应该是越高的，然而，订购周期越长，也就意味着你要一次订购更多数量的商品。
-同时也就意味着，你的周转会变慢，库存的持有成本会增加。
-这里相信大家也可以看出来，现货这周转两个是存在制约关系的，我们在采购时候的，当以’少量多次’的形式采购，现货可能会下降，但是周转会变短。
-而’多量少次’的形式则反之。与此同时，如果从成本的角度考虑的话，’少量多次’会增加订购成本，
-而减少仓储持有成本，
-‘多量少次’的则反之。那这种制约关系怎么去搞定呢？答案就是最优化(optimization)。
-库存管理很多模型都会基于最优化去求解,
-这里就看你的目标函数了，比如在计算补货量的时候，如果你基于成本最优，那么可以得到很经典的EOQ模型。</p>
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-10T20:51:35+08:00" pubdate data-updated="true"></time></div>
-	<div class="tags">
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
 		<a href="/blog/2015/05/04/ss1/">
 		
-			库存管理之安全库存(1) &#8211;Inventory Management&#8211;safety Stock</a>
+			库存管理之安全库存 &#8211;Inventory Management&#8211;safety Stock</a>
 	</h2>
 	<div class="entry-content">
-		<p>来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。
-不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。
-这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
+		<!--来了京东快半年了，重新开始工作感觉还是蛮不错的，回到熟悉的国家，与有着不错背景的同事们一起做事。-->
+<!--不过工作了就要有所取舍，比如我一开始想的是我这辈子肯定要一直奉献与机器学习了，结果，我开始开始做起了库存管理方面的算法。-->
+<p>这些日子做库存管理感觉还蛮有意思的，之后的几篇blog我会介绍一些我对于库存管理一些概念的理解，
 它们不一定是’正确’答案，不过却是我对于库存的一些认识。</p>
 
 <p>说到库存管理，我觉得一句话足以描述：在合适的时间，以合适的形式(如持有、退货、补货等)，
@@ -273,15 +210,51 @@ GMROII就是3500/300=11.67。
 在库存管理里面无处不在，由于它太’Normal’了，并且有着非常好的性质，
 所以我们会有很多假设都是基于这个分布，后面我还会再次对于他进行讨论。
 再回到刚才的话题，当我们根据销量预测的结果进行补货的时候，会有一半的概率由于销量预测的偏差导致缺货。
-具体来说，如果销量预测对未来一段时间预测是20件/天，
-那么当我们设置20*10 = 200件为我们的补货点的时候，如果真实销量是180+或190+件还好，如果真实销量在第8天就到达了200件，那么你就会有至少1天的断货发生。</p>
+具体来说，如果销量预测对未来一段时间预测是20件/天，一次补10天的货物，
+那么当我们设置20*10 = 200件为我们的补货点的时候，如果10天的真实销量是180+或190+件还好，如果真实销量在第8天就到达了200件，那么你就会有2天的断货发生。</p>
 
 <p>那么很自然，我们就会想去进行提前补货以防止断货的发生。不过提前多久是合适的？1天,2天还是1周？
 这个就是引入安全库存的意义所在。
 OK，那关于安全库存的本质，我觉得<a href="http://book.douban.com/subject/12565786/">Inventory Management Explained</a>这本书的观点描述的非常好。
 ‘safety stock can be used to compensate for supply variablity. More specifically,
-we use it to compensate for the amount of demand variablity that may occur during the lead-time period.’
-那在下一个blog我会详细阐述这个点。</p>
+we use it to compensate for the amount of demand variablity that may occur during the lead-time period.’</p>
+
+<p>对于安全库存的意义,就是由于各个因素(如销量、vlt)的不确定性，使得我们要寻找一个缓冲，
+可以容忍一定的变化范围，保证我们的库存减少断货的问题，同时又不要有过多冗余的库存。
+关于这，我有个很认可的观点：我们不怕任何程度的变量，因为通过数学，尤其是统计的方法，我们可以量化出来这些变动。
+在一些安全库存的公式中(如<a href="http://www.inventorymanagementreview.org/2005/06/safety_stock.html">安全库存计算公式</a>)，
+会考虑销量预测的不确定性和vlt(vendor lead time–供应商送货时长)的不确定性，然而，
+实际情况你可能还要量化如供应商能否有货的不确定性，销量预测的偏差等等，很难有一个公式能涵盖所有这些变化。
+而一般来讲，vlt是影响最大的因素，所以一般的安全库存公式都只是考虑它，并不是说其他的不确定性就不应该考虑了。
+至于安全库存计算公式，资料很多，大家可以参考<a href="http://en.wikipedia.org/wiki/Safety_stock">wiki</a>。
+另外，这里附上安全库存公式的一个推导<a href="http://michelbaudin.com/2012/07/23/safety-stocks-more-about-the-formula/">源自</a>：</p>
+
+<p><img class="left" src="/images/ssproof1.png" width="400" height="400" title="image" alt="proof1" /></p>
+
+<p><img class="right" src="/images/ssproof2.png" width="400" height="400" title="image" alt="proof2" /></p>
+
+<p>主要思路就是假设这些变量（销量、vlt）服从正态分布，然后通过正态分布的z-value（库存管理大都称其为称作’服务水平’），
+找到对应的一个值（如95%），去计算相应的安全库存。</p>
+
+<p>这里我想针对两个点去继续讨论下。一、当我们的服务水平设置为95%的时候，这个95%具体指的是什么呢？
+二、库存的现货率和周转这两个主要的kpi的关系。</p>
+
+<p>一、当我们设置了95%的服务水平的安全库存的时候，可能大多数人认为就是我的订单满足率，可以达到95%。
+不过如果仔细想一想这个公式所要表达的意义，那么我觉得其意义就是说这个vlt时间段内，有95%的时间段是可以满足所有订单的；
+而有5%的可能性，sku的订单不能完全满足的,即订单满足率不到100%。
+<!--$$-->
+<!--\frac{1}{4} * 5\% = 1.25\%-->
+<!--$$。--></p>
+
+<p>二、这里可以看出，当你的订购周期越长，那么现货率应该是越高的，然而，订购周期越长，也就意味着你要一次订购更多数量的商品。
+同时也就意味着，你的周转会变慢，库存的持有成本会增加。
+这里相信大家也可以看出来，现货这周转两个是存在制约关系的，我们在采购时候的，当以’少量多次’的形式采购，现货可能会下降，但是周转会变短。
+而’多量少次’的形式则反之。与此同时，如果从成本的角度考虑的话，’少量多次’会增加订购成本，
+而减少仓储持有成本，
+‘多量少次’的则反之。那这种相互制约关系怎么去做取舍呢？答案就是最优化(optimization)。
+库存管理很多模型都会基于最优化模型去求解,
+这里就看你的目标函数了，比如在计算补货量的时候，如果你基于成本最优，那么可以得到很经典的EOQ模型。</p>
+
 
 		
 		
@@ -796,6 +769,72 @@ kernel method是机器学习很重要的一块，并不是说一定只能使用�
 
 
 <time datetime="2014-06-29T14:17:00+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/06/24/models/">
+		
+			俯瞰Machine Learning</a>
+	</h2>
+	<div class="entry-content">
+		<p>这篇的内容主要是摘自<a href="http://book.douban.com/subject/11453073/">Machine Learning</a>
+这本书第一章节，我觉得蛮有收获的，希望可以提供一个不一样的角度。
+另外，这本书真的不错，是我导师推荐的，最重要的是我们Sussex大学图书馆竟然有！我会告诉大家我们图书馆连一本介绍Ruby的书籍都没有么。。可能是因为这本书是Cambridge出的，作为英国同乡总要给些面子吧，就引进来了。</p>
+
+<p>既然是‘俯瞰’，那肯定不是某些特定的技术。首先，问大家这样一个问题”Given a real world problem, how would you
+reduce it to a ml problem.(一个实际问题如何转化成一个ML问题？)”
+<a href="http://www.reddit.com/r/MachineLearning/comments/1wmayh/ml_job_interview_questions/">引自reddit</a>。
+这样的问题好像很没有头绪，但是别慌。书里给出了一个蛮不错的答案：其实大多数机器学习问题都着重干的3件事是关于Task, Model, Feature的。
+具体来说，实际的问题到底是要处理哪个Task：分类(classfication)? 回归(regression)? 聚类(clustering)?
+而不同的问题也要根据其场景去选择不同的model（稍后详细描述）。
+在真正使用模型的时候，更重要的可能是feature的选取、生成。例如：在SVM中的kernel trick就是一种关于feature的操作，亦或者
+pre-processing。通常来讲，我们大多数情况下不能直接获取到适用于model的数据，自然要对feature进行一些处理喽。</p>
+
+<p>这里我重点想聊一聊Model。在作者看来，Model有三大类型：Logical model, Probabilistic model, Geometry model.
+大家可以试着回顾一下3种model里面包含的算法。这里我分别举例一下他们典型的代表: Decision Tree, Naive Bayes, SVM。
+这样分类有什么好处呢就是各个类别有其特点。比如 Logical model比较直观(主要是Tree的表现形式)，其很多思想源自computer science
+(如<a href="http://en.wikipedia.org/wiki/Disjunctive_normal_form">DNF</a>,<a href="http://en.wikipedia.org/wiki/Conjunctive_normal_form">CNF</a>)。
+Probabilistic model的思想则更多是源自数学喽(尤其是概率与统计)。Geometry model也是很直观的，几乎所有课件都会来个二维平面，
+然后各种正例反例加个decision boundary去解释来解释去，当然也免不了最优化，解析几何的一些数学概念。</p>
+
+<p>在处理实际问题时，不知道大家有没有在意过这样一个角度，这些模型其实还有个区别就是在于输入数据的类型，即<strong>离散值</strong>、<strong>连续值</strong>。
+其对应的概念就是Grouping model, Grading model。举个例子：训练数据里面有两个正例为(5.0, 3.0), (1.3, 2.4)，两个个反例为(-5.0, -3.0), (-1.3, -2.4)。
+对于Geometry model可能直接画个直线(decision boundary)，然后告诉你在直线的一侧，任何数据都是正例，另一侧都是反例(连续的感觉有木有)。
+而对于Decision Tree,可能会问你这样的问题，对于新来的数据(x,y), x和y &gt; 0乎?(离散的感觉有木有) 要是大于0呢，就是正例，否则呢，就都是反例。
+从<a href="http://book.douban.com/subject/11453073/">书里</a>摘两个图给大家，希望大家能有个俯瞰的感觉。</p>
+
+<p>字段说明(geometry model, probabilistic model, logical model, grouping model, grading model, discrete value, real value, supervised, unsupervised, multi-class)</p>
+
+<p><img class="left" src="/images/model1.png" width="600" height="600" title="image" alt="总结" />
+<img class="left" src="/images/model2.png" width="600" height="600" title="image" alt="总结2" /></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-24T12:01:00+08:00" pubdate data-updated="true"></time></div>
 	<div class="tags">
 
 </div>
