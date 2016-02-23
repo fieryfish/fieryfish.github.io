@@ -1,0 +1,204 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>库存管理之安全库存(2) &#8211;Inventory Management&#8211;safety stock(2) - 俞龙-Data Player</title>
+	<meta name="author" content="YuLong">
+
+	
+	<meta name="description" content="这里我想针对两个点去继续讨论下。一、当我们的service level设置为95%的时候，这个95%具体指的是什么呢？
+二、库存的现货率和周转这两个主要的kpi的关系。
+三、安全库存公式 一、当我们设置了95%的service level的安全库存的时候，可能从直观意义上，会认为就是我的订单满足率 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="俞龙-Data Player" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<body>
+	<header id="header" class="inner"><h1><a href="/">俞龙-Data Player</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/about">About</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="https://www.google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:fieryfish.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="https://www.google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:fieryfish.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">库存管理之安全库存(2) &#8211;Inventory Management&#8211;safety Stock(2)</h2>
+	<div class="entry-content"><p>这里我想针对两个点去继续讨论下。一、当我们的service level设置为95%的时候，这个95%具体指的是什么呢？
+二、库存的现货率和周转这两个主要的kpi的关系。
+三、安全库存公式</p>
+
+<p>一、当我们设置了95%的service level的安全库存的时候，可能从直观意义上，会认为就是我的订单满足率，可以达到95%。
+根据<a href="http://en.wikipedia.org/wiki/Safety_stock">wiki</a>上的公式，我们也不难看出，
+其实它主要针对的是vlt这段时间的销量的不确定性，
+而这段时间的库存是随着时间一天一天消逝而慢慢减少，直至可能发生的缺货或者货物送达。
+所以，其真正的意义是说vlt时间段内，有95%的时间段是可以满足所有订单的。
+也就说，vlt时间段内，95%的时间段内，我的订单满足率应该是100%。</p>
+
+<p><img class="left" src="/images/95ss.png" width="400" height="400" title="image" alt="95% service level" /></p>
+
+<p>那么非vlt时间呢？也就是当前库存在补货点之上时候呢？当然是100%不缺货喽。
+所以下个问题也就来了，当我们同时考虑vlt和非vlt时段的时候，情况发生了变化。
+不妨先看个例子，
+假设vlt是1周，供货商一次备10周的货，vlt时段的安全库存service level设置为50%，那么总体来讲，
+它会有$\frac{9}{10}$的时间是非vlt时段，而$\frac{1}{10}$的时间是vlt时段，
+而这段vlt时段会有50%的概率在这周发生缺货，
+所以，假设2年100周，基本上会有$100\cdot \frac{1}{10} * \frac{1}{2} = 5$周左右发生缺货的情况。
+而这5周与100周的比值5%，我们可以称其为desired service level.
+这样就延伸出来一个公式:</p>
+
+<script type="math/tex; mode=display">service\_level = 1- \frac{1- desired\_service\_level}{\frac{vlt}{order\_cycle}}</script>
+
+<p>套用进去上面的例子：</p>
+
+<script type="math/tex; mode=display">50\% = 1- \frac{1- 5\%}{\frac{1}{10}}</script>
+
+<p>这样总体的desired service level和我们vlt时间段设置的service level就对应起来了，而且我们惊奇的发现，
+订购周期(order cycle)会十分影响service level，
+假设我们想要总体的service level达到95%，那么即使不要safety stock，而只需要10倍于vlt的order cycle，也是可行的。</p>
+
+<!--\frac{1}{4} * 5\% = 1.25\%-->
+<!--$$。-->
+
+<p>二、这里可以看出，当你的order cycle越长，那么现货率应该是越高的，然而，订购周期越长，也就意味着你要一次订购更多数量的商品。
+同时也就意味着，你的周转会变慢，库存的持有成本会增加。
+这里相信大家也可以看出来，现货这周转两个是存在制约关系的，我们在采购时候的，当以’少量多次’的形式采购，现货可能会下降，但是周转会变短。
+而’多量少次’的形式则反之。与此同时，如果从成本的角度考虑的话，’少量多次’会增加订购成本，
+而减少仓储持有成本，
+‘多量少次’的则反之。那这种相互制约关系怎么去做取舍呢？答案就是最优化(optimization)。
+库存管理很多模型都会基于最优化模型去求解,
+这里就看你的目标函数怎么设计的了，比如在计算补货量的时候，如果你基于成本最优，那么可以得到很经典的EOQ模型。</p>
+
+<p>三、
+关于<a href="http://www.inventorymanagementreview.org/2005/06/safety_stock.html">安全库存公式</a>，我想提醒大家的是：</p>
+
+<p>1 当我们在计算销量的方差的时候，$var(X) = E[(X-E(X))^2]$，我们的E(X)应该有是历史销量均值or预测值？还是都试试？
+2 如果vlt是两周，但是销量预测只是预测一周总量，那么它们的标准差是否在同一水平？是否要做些转换呢？
+3 如果你的不确定因素不仅仅只有vlt；或者vlt其实基本稳定了，不应该考虑它的不确定性，那公式还是这样么？</p>
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-02-23T22:13:29+08:00" pubdate data-updated="true"></time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2016
+
+    YuLong
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
