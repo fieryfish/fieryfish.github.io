@@ -112,14 +112,14 @@
 它会有$\frac{9}{10}$的时间是非vlt时段，而$\frac{1}{10}$的时间是vlt时段，
 而这段vlt时段会有50%的概率在这周发生缺货，
 所以，假设2年100周，基本上会有$100\cdot \frac{1}{10} * \frac{1}{2} = 5$周左右发生缺货的情况。
-而这5周与100周的比值5%，我们可以称其为desired service level.
+也就是说95周都不会断货了，它与100周的比值为95%，假设称其为desired service level.
 这样就延伸出来一个公式:</p>
 
 <script type="math/tex; mode=display">service\_level = 1- \frac{1- desired\_service\_level}{\frac{vlt}{order\_cycle}}</script>
 
 <p>套用进去上面的例子：</p>
 
-<script type="math/tex; mode=display">50\% = 1- \frac{1- 5\%}{\frac{1}{10}}</script>
+<script type="math/tex; mode=display">50\% = 1- \frac{1- 95\%}{\frac{1}{10}}</script>
 
 <p>这样总体的desired service level和我们vlt时间段设置的service level就对应起来了，而且我们惊奇的发现，
 订购周期(order cycle)会十分影响service level，
@@ -140,9 +140,11 @@
 <p>三、
 关于<a href="http://www.inventorymanagementreview.org/2005/06/safety_stock.html">安全库存公式</a>，我想提醒大家的是：</p>
 
-<p>1 当我们在计算销量的方差的时候，$var(X) = E[(X-E(X))^2]$，我们的E(X)应该有是历史销量均值or预测值？还是都试试？
-2 如果vlt是两周，但是销量预测只是预测一周总量，那么它们的标准差是否在同一水平？是否要做些转换呢？
-3 如果你的不确定因素不仅仅只有vlt；或者vlt其实基本稳定了，不应该考虑它的不确定性，那公式还是这样么？</p>
+<p>1 当我们在计算销量的方差的时候，$var(X) = E[(X-E(X))^2]$，我们的E(X)应该有是历史销量均值or预测值？还是都试试？</p>
+
+<p>2 如果vlt是两周，但是销量预测只是预测一周总量，那么它们的标准差是否在同一水平？是否要做些转换呢？</p>
+
+<p>3 如果你的不确定因素不仅仅只有vlt；或者vlt其实基本稳定了，不应该考虑它的不确定性，那公式还是这样么？</p>
 
 </div>
 
